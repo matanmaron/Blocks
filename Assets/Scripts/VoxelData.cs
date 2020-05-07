@@ -23,4 +23,14 @@ public static class VoxelData
         {4,7,0,0,7,3}, //left face
         {1,2,5,5,2,6} //right face
     };
+
+    public static readonly Vector2[] voxelUvs = new Vector2[6]
+    {
+        new Vector2(0,0),
+        new Vector2(0,1),
+        new Vector2(1,0),
+        new Vector2(1,0),
+        new Vector2(0,1),
+        new Vector2(1,1)
+    };
 }

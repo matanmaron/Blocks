@@ -24,7 +24,7 @@ public class Chunk : MonoBehaviour
 
                 triengles.Add(vertexIndex);
 
-                uvs.Add(Vector2.zero);
+                uvs.Add(VoxelData.voxelUvs[j]);
 
                 vertexIndex++;
             }
