@@ -35,7 +35,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].BlockName
-    value: Bedrock
+    value: Air
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].IsSolid
@@ -43,95 +43,95 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].backFaceTexture
-    value: 9
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].frontFaceTexture
-    value: 9
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].topFaceTexture
-    value: 9
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].bottomFaceTexture
-    value: 9
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].leftFaceTexture
-    value: 9
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].rightFaceTexture
-    value: 9
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[1].BlockName
-    value: Stone
+    value: Bedrock
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[1].IsSolid
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[1].backFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[1].frontFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[1].topFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[1].bottomFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[1].leftFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[1].rightFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[2].BlockName
-    value: Grass
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[2].IsSolid
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[2].backFaceTexture
-    value: 2
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[2].frontFaceTexture
-    value: 2
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[2].topFaceTexture
-    value: 7
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[2].bottomFaceTexture
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[1].backFaceTexture
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[1].frontFaceTexture
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[1].topFaceTexture
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[1].bottomFaceTexture
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[1].leftFaceTexture
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[1].rightFaceTexture
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[2].BlockName
+    value: Stone
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[2].IsSolid
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[2].backFaceTexture
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[2].frontFaceTexture
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[2].topFaceTexture
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[2].bottomFaceTexture
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[2].leftFaceTexture
-    value: 2
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[2].rightFaceTexture
-    value: 2
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[3].BlockName
-    value: Furnace
+    value: Grass
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[3].IsSolid
@@ -139,59 +139,59 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[3].backFaceTexture
-    value: 13
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[3].frontFaceTexture
-    value: 12
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[3].topFaceTexture
-    value: 15
+    value: 7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[3].bottomFaceTexture
-    value: 15
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[3].leftFaceTexture
-    value: 13
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[3].rightFaceTexture
-    value: 13
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].BlockName
-    value: 
+    value: Furnace
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].IsSolid
-    value: 0
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].backFaceTexture
-    value: 0
+    value: 13
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].frontFaceTexture
-    value: 0
+    value: 12
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].topFaceTexture
-    value: 0
+    value: 15
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].bottomFaceTexture
-    value: 0
+    value: 15
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].leftFaceTexture
-    value: 0
+    value: 13
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].rightFaceTexture
-    value: 0
+    value: 13
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[5].BlockName
