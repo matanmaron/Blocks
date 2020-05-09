@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.WSA;
 
 public class WorldScript : MonoBehaviour
 {
+    public int seed;
+    public BiomAttributes biome;
+
     public Transform player;
     public Vector3 spawnPosition;
 
@@ -16,6 +20,8 @@ public class WorldScript : MonoBehaviour
 
     private void Start()
     {
+        Random.InitState(seed);
+
         spawnPosition = new Vector3(VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2, VoxelData.ChunkHeight + 2, VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2);
         GenerateWorld();
         playerLastChunkCoord = GetChunkFromVector3(player.position);
@@ -89,22 +95,52 @@ public class WorldScript : MonoBehaviour
 
     public byte GetVoxel(Vector3 pos)
     {
+        int yPos = Mathf.FloorToInt(pos.y);
+
         if (!IsVoxelInWorld(pos))
         {
-            return 0;
+            return (int)BlockTypeEnum.Air;
         }
-        if (pos.y < 1)
+        if (yPos == 0)
         {
             return (int)BlockTypeEnum.Bedrock;
         }
-        else if (pos.y == VoxelData.ChunkHeight - 1)
+
+        float perlin = Noise.Get2DPerlin(new Vector2(pos.x, pos.z), 0, biome.terrainScale);
+        int terrainHeight = Mathf.FloorToInt(biome.terrainHeight * perlin) + biome.solideGroundHeight;
+        byte voxelValue = 0;
+
+        if (yPos == terrainHeight)
         {
-           return (int)BlockTypeEnum.Grass;
+            voxelValue = (int)BlockTypeEnum.Grass;
+        }
+        else if (yPos < terrainHeight && yPos > terrainHeight - 4)
+        {
+            voxelValue = (int)BlockTypeEnum.Dirt;
+        }
+        else if (yPos > terrainHeight)
+        {
+            return (int)BlockTypeEnum.Air;
         }
         else
         {
-            return (int)BlockTypeEnum.Stone;
+            voxelValue = (int)BlockTypeEnum.Stone;
         }
+
+        if (voxelValue == (int)BlockTypeEnum.Stone)
+        {
+            foreach (Lode lode in biome.lodes)
+            {
+                if (yPos > lode.minHeight && yPos < lode.maxHeight)
+                {
+                    if (Noise.Get3DPerlin(pos, lode.noiseOffset, lode.scale, lode.threshold))
+                    {
+                        voxelValue = lode.blockID;
+                    }
+                }
+            }
+        }
+        return voxelValue;
     }
 
     private void CreateNewChunk(int x, int z)
@@ -179,4 +215,6 @@ public enum BlockTypeEnum
     Stone,
     Grass,
     Furnace,
+    Sand,
+    Dirt,
 }

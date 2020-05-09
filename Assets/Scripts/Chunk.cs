@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using TMPro;
@@ -45,7 +46,10 @@ public class Chunk
             {
                 for (int z = 0; z < VoxelData.ChunkWidth; z++)
                 {
-                    AddVoxelDataChunk(new Vector3(x, y, z));
+                    if (world.blockTypes[voxelMap[x,y,z]].IsSolid)
+                    {
+                        AddVoxelDataChunk(new Vector3(x, y, z));
+                    }
                 }
             }
         }
