@@ -9,6 +9,7 @@ using UnityEngine;
 public class Chunk
 {
     public ChunkCoord coord;
+    public byte[,,] voxelMap = new byte[VoxelData.ChunkWidth, VoxelData.ChunkHeight, VoxelData.ChunkWidth];
 
     GameObject chunkObject;
     MeshRenderer meshRenderer;
@@ -18,10 +19,9 @@ public class Chunk
     List<Vector3> vertices = new List<Vector3>();
     List<int> triengles = new List<int>();
     List<Vector2> uvs = new List<Vector2>();
-    byte[,,] voxelMap = new byte[VoxelData.ChunkWidth, VoxelData.ChunkHeight, VoxelData.ChunkWidth];
-    WorldScript world;
+    World world;
 
-    public Chunk (ChunkCoord _chunkCoord, WorldScript _world)
+    public Chunk (ChunkCoord _chunkCoord, World _world)
     {
         coord = _chunkCoord;
         world = _world;

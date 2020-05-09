@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.WSA;
 
-public class WorldScript : MonoBehaviour
+public class World : MonoBehaviour
 {
     public int seed;
     public BiomAttributes biome;
@@ -22,7 +22,7 @@ public class WorldScript : MonoBehaviour
     {
         Random.InitState(seed);
 
-        spawnPosition = new Vector3(VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2, VoxelData.ChunkHeight + 2, VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2);
+        spawnPosition = new Vector3(VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2, VoxelData.ChunkHeight -50, VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2);
         GenerateWorld();
         playerLastChunkCoord = GetChunkFromVector3(player.position);
     }
@@ -91,6 +91,19 @@ public class WorldScript : MonoBehaviour
             chunks[c.x, c.z].isActive = false;
             //activeChunks.re
         }
+    }
+
+    public bool CheckForVoxel(float _x, float _y, float _z)
+    {
+        int xCheck = Mathf.FloorToInt(_x);
+        int yCheck = Mathf.FloorToInt(_y);
+        int zCheck = Mathf.FloorToInt(_z);
+        int xChunk = xCheck / VoxelData.ChunkWidth;
+        int zChunk = zCheck / VoxelData.ChunkWidth;
+        xCheck -= (xChunk * VoxelData.ChunkWidth);
+        zCheck -= (zChunk * VoxelData.ChunkWidth);
+
+        return blockTypes[chunks[xChunk, zChunk].voxelMap[xCheck, yCheck, zCheck]].IsSolid;
     }
 
     public byte GetVoxel(Vector3 pos)
