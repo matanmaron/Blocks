@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +14,12 @@ public class Player : MonoBehaviour
     public float playerWidth = 0.15f;
     public bool isGrounded;
     public bool isSprinting;
-
+    public Transform highlightBlock;
+    public Transform placeHighlightBlock;
+    public float checkIncrement = 0.1f;
+    public float reach = 8;
+    public TextMeshProUGUI SelectedBlockTMP;
+    public byte selectedBlockIndex = 1;
     Transform cam;
     World world;
     float horizontal;
@@ -27,6 +34,8 @@ public class Player : MonoBehaviour
     {
         cam = GameObject.Find("Main Camera").transform;
         world = GameObject.Find("World").GetComponent<World>();
+        Cursor.lockState = CursorLockMode.Locked;
+        SelectedBlockTMP.text = world.blockTypes[selectedBlockIndex].blockName;
     }
     private void FixedUpdate()
     {
@@ -43,6 +52,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         GetPlayerInputs();
+        PlaceCursorBlocks();
     }
 
     private void CalculateVelocity()
@@ -108,6 +118,65 @@ public class Player : MonoBehaviour
             jumpRequet = true;
         }
 
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll != 0)
+        {
+            if (scroll > 0) //up
+            {
+                selectedBlockIndex++;
+            }
+            else //down
+            {
+                selectedBlockIndex--;
+            }
+            if (selectedBlockIndex > (byte)world.blockTypes.Length - 1)
+            {
+                selectedBlockIndex = 1;
+            }
+            if (selectedBlockIndex < 1)
+            {
+                selectedBlockIndex = (byte)(world.blockTypes.Length - 1);
+            }
+            SelectedBlockTMP.text = world.blockTypes[selectedBlockIndex].blockName;
+        }
+
+        if (highlightBlock.gameObject.activeSelf)
+        {
+            //destroy
+            if (Input.GetMouseButtonDown(0))
+            {
+                world.GetChunkFromVector3(highlightBlock.position).EditVoxel(highlightBlock.position, 0);
+            }
+            //build
+            if (Input.GetMouseButtonDown(1))
+            {
+                world.GetChunkFromVector3(placeHighlightBlock.position).EditVoxel(placeHighlightBlock.position, selectedBlockIndex);
+            }
+        }
+    }
+
+    void PlaceCursorBlocks()
+    {
+        float step = checkIncrement;
+        Vector3 lastPos = new Vector3();
+        while(step < reach)
+        {
+            Vector3 pos = cam.position + (cam.forward * step);
+            if (world.CheckForVoxel(pos))
+            {
+                highlightBlock.position = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
+                placeHighlightBlock.position = lastPos;
+
+                highlightBlock.gameObject.SetActive(true);
+                placeHighlightBlock.gameObject.SetActive(true);
+
+                return;
+            }
+            lastPos = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
+            step += checkIncrement;
+        }
+        highlightBlock.gameObject.SetActive(false);
+        placeHighlightBlock.gameObject.SetActive(false);
     }
 
     float CheckDownSpeed(float downSpeed)
