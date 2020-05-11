@@ -7,15 +7,14 @@ public class World : MonoBehaviour
 {
     public int seed;
     public BiomAttributes biome;
-
     public Transform player;
     public Vector3 spawnPosition;
-
+    public ChunkCoord playerChunkCoord;
     public Material material;
     public BlockType[] blockTypes;
+    
     Chunk[,] chunks = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
     List<ChunkCoord> activeChunks = new List<ChunkCoord>();
-    ChunkCoord playerChunkCoord;
     ChunkCoord playerLastChunkCoord;
 
     private void Start()
