@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WorldScript
+  m_Name: World
   m_TargetType:
     m_NativeTypeID: 114
     m_ManagedTypePPtr: {fileID: 11500000, guid: 78e7344cb06be6146932852b40181381,
@@ -55,7 +55,7 @@ Preset:
     objectReference: {fileID: 2100000, guid: 5a835492e3375d441bf4aeb3189c9625, type: 2}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.size
-    value: 15
+    value: 11
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].blockName
@@ -63,6 +63,14 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].isSolid
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[0].icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[0].isTransparent
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -91,11 +99,20 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[1].blockName
-    value: BedRock
+    value: Bedrock
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[1].isSolid
     value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[1].icon
+    value: 
+    objectReference: {fileID: 1658201283926802149, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[1].isTransparent
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[1].backFaceTexture
@@ -130,6 +147,15 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[2].icon
+    value: 
+    objectReference: {fileID: -9190054672469268964, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[2].isTransparent
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[2].backFaceTexture
     value: 0
     objectReference: {fileID: 0}
@@ -162,6 +188,15 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[3].icon
+    value: 
+    objectReference: {fileID: -2173331863962407998, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[3].isTransparent
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[3].backFaceTexture
     value: 2
     objectReference: {fileID: 0}
@@ -187,353 +222,292 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].blockName
-    value: Furnace
+    value: Sand
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].isSolid
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[4].icon
+    value: 
+    objectReference: {fileID: 4178355347634356053, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[4].isTransparent
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].backFaceTexture
-    value: 13
+    value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].frontFaceTexture
-    value: 12
+    value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].topFaceTexture
-    value: 15
+    value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].bottomFaceTexture
-    value: 15
+    value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].leftFaceTexture
-    value: 13
+    value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[4].rightFaceTexture
-    value: 13
+    value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[5].blockName
-    value: Sand
+    value: Dirt
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[5].isSolid
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[5].icon
+    value: 
+    objectReference: {fileID: -8387793910672067857, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[5].isTransparent
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[5].backFaceTexture
-    value: 10
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[5].frontFaceTexture
-    value: 10
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[5].topFaceTexture
-    value: 10
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[5].bottomFaceTexture
-    value: 10
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[5].leftFaceTexture
-    value: 10
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[5].rightFaceTexture
-    value: 10
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[6].blockName
-    value: Dirt
+    value: Wood
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[6].isSolid
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[6].icon
+    value: 
+    objectReference: {fileID: 8279079627158457885, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[6].isTransparent
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[6].backFaceTexture
-    value: 1
+    value: 5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[6].frontFaceTexture
-    value: 1
+    value: 5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[6].topFaceTexture
-    value: 1
+    value: 6
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[6].bottomFaceTexture
-    value: 1
+    value: 6
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[6].leftFaceTexture
-    value: 1
+    value: 5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[6].rightFaceTexture
-    value: 1
+    value: 5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[7].blockName
-    value: 
+    value: Planks
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[7].isSolid
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[7].icon
+    value: 
+    objectReference: {fileID: -5579962401935626545, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[7].isTransparent
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[7].backFaceTexture
-    value: 0
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[7].frontFaceTexture
-    value: 0
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[7].topFaceTexture
-    value: 0
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[7].bottomFaceTexture
-    value: 0
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[7].leftFaceTexture
-    value: 0
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[7].rightFaceTexture
-    value: 0
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[8].blockName
-    value: 
+    value: Brick
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[8].isSolid
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[8].icon
+    value: 
+    objectReference: {fileID: -1190241618586288452, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[8].isTransparent
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[8].backFaceTexture
-    value: 0
+    value: 11
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[8].frontFaceTexture
-    value: 0
+    value: 11
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[8].topFaceTexture
-    value: 0
+    value: 11
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[8].bottomFaceTexture
-    value: 0
+    value: 11
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[8].leftFaceTexture
-    value: 0
+    value: 11
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[8].rightFaceTexture
-    value: 0
+    value: 11
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[9].blockName
-    value: 
+    value: Cobblestone
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[9].isSolid
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[9].icon
+    value: 
+    objectReference: {fileID: 7391409288775618200, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[9].isTransparent
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[9].backFaceTexture
-    value: 0
+    value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[9].frontFaceTexture
-    value: 0
+    value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[9].topFaceTexture
-    value: 0
+    value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[9].bottomFaceTexture
-    value: 0
+    value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[9].leftFaceTexture
-    value: 0
+    value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[9].rightFaceTexture
-    value: 0
+    value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[10].blockName
-    value: 
+    value: Glass
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[10].isSolid
-    value: 0
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[10].icon
+    value: 
+    objectReference: {fileID: -1867609910350370242, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[10].isTransparent
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[10].backFaceTexture
-    value: 0
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[10].frontFaceTexture
-    value: 0
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[10].topFaceTexture
-    value: 0
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[10].bottomFaceTexture
-    value: 0
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[10].leftFaceTexture
-    value: 0
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[10].rightFaceTexture
-    value: 0
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].blockName
+    propertyPath: DebugScreen
     value: 
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].isSolid
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].backFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].frontFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].topFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].bottomFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].leftFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].rightFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].blockName
-    value: 
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].isSolid
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].backFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].frontFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].topFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].bottomFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].leftFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].rightFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].blockName
-    value: 
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].isSolid
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].backFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].frontFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].topFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].bottomFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].leftFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].rightFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].blockName
-    value: 
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].isSolid
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].backFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].frontFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].topFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].bottomFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].leftFaceTexture
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].rightFaceTexture
-    value: 0
     objectReference: {fileID: 0}

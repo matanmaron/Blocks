@@ -18,8 +18,10 @@ public class Chunk
     MeshFilter meshFilter;
     int vertexIndex = 0;
     List<Vector3> vertices = new List<Vector3>();
-    List<int> triengles = new List<int>();
+    List<int> triangles = new List<int>();
+    List<int> transparentTriangles = new List<int>();
     List<Vector2> uvs = new List<Vector2>();
+    Material[] materials = new Material[2];
     World world;
     bool _isActive;
 
@@ -39,7 +41,9 @@ public class Chunk
         chunkObject = new GameObject();
         meshFilter = chunkObject.AddComponent<MeshFilter>();
         meshRenderer = chunkObject.AddComponent<MeshRenderer>();
-        meshRenderer.material = world.material;
+        materials[0] = world.material;
+        materials[1] = world.transparentMaterial;
+        meshRenderer.materials = materials;
         chunkObject.transform.SetParent(world.transform);
         chunkObject.transform.position = new Vector3(coord.x * VoxelData.ChunkWidth, 0, coord.z * VoxelData.ChunkWidth);
         chunkObject.name = $"Chunk {coord.x},{coord.z}";
@@ -71,7 +75,8 @@ public class Chunk
     {
         vertexIndex = 0;
         vertices.Clear();
-        triengles.Clear();
+        triangles.Clear();
+        transparentTriangles.Clear();
         uvs.Clear();
     }
 
@@ -83,9 +88,9 @@ public class Chunk
 
         if (!IsVoxelInChunk(x,y,z))
         {
-            return world.CheckForVoxel(pos + position);
+            return world.CheckIfVoxelTransparent(pos + position);
         }
-        return world.blockTypes[voxelMap[x, y, z]].isSolid;
+        return world.blockTypes[voxelMap[x, y, z]].isTransparent;
     }
 
     private bool IsVoxelInChunk(int x, int y, int z)
@@ -134,10 +139,11 @@ public class Chunk
     {
         Mesh mesh = new Mesh();
         mesh.vertices = vertices.ToArray();
-        mesh.triangles = triengles.ToArray();
+        mesh.subMeshCount = 2;
+        mesh.SetTriangles(triangles.ToArray(),0);
+        mesh.SetTriangles(transparentTriangles.ToArray(),1);
         mesh.uv = uvs.ToArray();
         mesh.RecalculateNormals();
-
         meshFilter.mesh = mesh;
     }
 
@@ -202,12 +208,12 @@ public class Chunk
 
     private void UpdateMeshData(Vector3 pos)
     {
+        byte blockID = voxelMap[(int)pos.x, (int)pos.y, (int)pos.z];
+        bool isTransparent = world.blockTypes[blockID].isTransparent;
         for (int i = 0; i < 6; i++)
         {
-            if (!CheckVoxel(pos + VoxelData.faceChecks[i]))
+            if (CheckVoxel(pos + VoxelData.faceChecks[i]))
             {
-                byte blockID = voxelMap[(int)pos.x, (int)pos.y, (int)pos.z];
-
                 vertices.Add(pos + VoxelData.voxelVerts[VoxelData.voxelTris[i,0]]);
                 vertices.Add(pos + VoxelData.voxelVerts[VoxelData.voxelTris[i,1]]);
                 vertices.Add(pos + VoxelData.voxelVerts[VoxelData.voxelTris[i,2]]);
@@ -215,12 +221,24 @@ public class Chunk
 
                 AddTexture(world.blockTypes[blockID].GetTextureID(i));
 
-                triengles.Add(vertexIndex);
-                triengles.Add(vertexIndex + 1);
-                triengles.Add(vertexIndex + 2);
-                triengles.Add(vertexIndex + 2);
-                triengles.Add(vertexIndex + 1);
-                triengles.Add(vertexIndex + 3);
+                if (!isTransparent)
+                {
+                    triangles.Add(vertexIndex);
+                    triangles.Add(vertexIndex + 1);
+                    triangles.Add(vertexIndex + 2);
+                    triangles.Add(vertexIndex + 2);
+                    triangles.Add(vertexIndex + 1);
+                    triangles.Add(vertexIndex + 3);
+                }
+                else
+                {
+                    transparentTriangles.Add(vertexIndex);
+                    transparentTriangles.Add(vertexIndex + 1);
+                    transparentTriangles.Add(vertexIndex + 2);
+                    transparentTriangles.Add(vertexIndex + 2);
+                    transparentTriangles.Add(vertexIndex + 1);
+                    transparentTriangles.Add(vertexIndex + 3);
+                }
                 vertexIndex += 4;
             }
         }

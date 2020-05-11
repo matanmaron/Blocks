@@ -1,37 +1,49 @@
 fileFormatVersion: 2
-guid: 6e09414ede5cd4e46b546830500fd2a6
+guid: 3a6c968aa535ca141bbf0b8171cffe11
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5679390536090785944
-    second: stone_icon
+      213: -9190054672469268964
+    second: BlockIcons 1_0
   - first:
-      213: 5392753449730437660
-    second: grass_icon
+      213: -2173331863962407998
+    second: BlockIcons 1_1
   - first:
-      213: -6943373833598557
-    second: dirt_icon
+      213: -8387793910672067857
+    second: BlockIcons 1_2
   - first:
-      213: -7538633921802359561
-    second: wood_icon
+      213: -1867609910350370242
+    second: BlockIcons 1_3
   - first:
-      213: 448961105294916356
-    second: brick_icon
+      213: 7026438064486995877
+    second: BlockIcons 1_0
   - first:
-      213: -4219558403781695398
-    second: bedrock_icon
+      213: 9137035399876812491
+    second: BlockIcons 1_1
   - first:
-      213: 6181873364862223445
-    second: sand_icon
+      213: -7973412965402119485
+    second: BlockIcons 1_2
   - first:
-      213: -9138616440249935319
-    second: planks_icon
+      213: -7617697215486691312
+    second: BlockIcons 1_3
   - first:
-      213: -1501523072523359806
-    second: cobblesone_icon
+      213: 8279079627158457885
+    second: BlockIcons 1_4
   - first:
-      213: 1159639000735656762
-    second: BlockIcons_9
+      213: -1190241618586288452
+    second: BlockIcons 1_5
+  - first:
+      213: 1658201283926802149
+    second: BlockIcons 1_6
+  - first:
+      213: 4178355347634356053
+    second: BlockIcons 1_7
+  - first:
+      213: -5579962401935626545
+    second: BlockIcons 1_8
+  - first:
+      213: 7391409288775618200
+    second: BlockIcons 1_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -77,7 +89,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -165,7 +177,91 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stone_icon
+      name: BlockIcons 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7d706213ce28160800000000000000
+      internalID: 7026438064486995877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlockIcons 1_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce93dd39454dce70800000000000000
+      internalID: 9137035399876812491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlockIcons 1_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c276b5272fb85190800000000000000
+      internalID: -7973412965402119485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlockIcons 1_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018fe682eb0884690800000000000000
+      internalID: -7617697215486691312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlockIcons 1_4
       rect:
         serializedVersion: 2
         x: 0
@@ -179,14 +275,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89818641a9f31de40800000000000000
-      internalID: 5679390536090785944
+      spriteID: d1e04f37e0335e270800000000000000
+      internalID: 8279079627158457885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_icon
+      name: BlockIcons 1_5
       rect:
         serializedVersion: 2
         x: 32
@@ -200,14 +296,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c12f174c0b8e6da40800000000000000
-      internalID: 5392753449730437660
+      spriteID: cbe3747dd896b7fe0800000000000000
+      internalID: -1190241618586288452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_icon
+      name: BlockIcons 1_6
       rect:
         serializedVersion: 2
         x: 64
@@ -221,14 +317,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a90b1dc90557eff0800000000000000
-      internalID: -6943373833598557
+      spriteID: 5eebd8e384d130710800000000000000
+      internalID: 1658201283926802149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wood_icon
+      name: BlockIcons 1_7
       rect:
         serializedVersion: 2
         x: 0
@@ -242,14 +338,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fca247b364616790800000000000000
-      internalID: -7538633921802359561
+      spriteID: 55f79110d008cf930800000000000000
+      internalID: 4178355347634356053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: brick_icon
+      name: BlockIcons 1_8
       rect:
         serializedVersion: 2
         x: 32
@@ -263,14 +359,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40bf11f1fb70b3600800000000000000
-      internalID: 448961105294916356
+      spriteID: fce679462cdff82b0800000000000000
+      internalID: -5579962401935626545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedrock_icon
+      name: BlockIcons 1_9
       rect:
         serializedVersion: 2
         x: 64
@@ -284,71 +380,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a58e399ecfd1175c0800000000000000
-      internalID: -4219558403781695398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sand_icon
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 554cf07821d6ac550800000000000000
-      internalID: 6181873364862223445
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: planks_icon
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92a9b5c14cc1d2180800000000000000
-      internalID: -9138616440249935319
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cobblesone_icon
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c9213098b4892be0800000000000000
-      internalID: -1501523072523359806
+      spriteID: 89e4ef6369f839660800000000000000
+      internalID: 7391409288775618200
       vertices: []
       indices: 
       edges: []
@@ -356,7 +389,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 148a33cb66c51af49a077f12414278a5
+    spriteID: c823f5db034a65e4cb1dd5b20136c98e
     internalID: 0
     vertices: []
     indices: 

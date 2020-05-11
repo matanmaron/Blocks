@@ -1373,10 +1373,12 @@ MonoBehaviour:
   player: {fileID: 905347140}
   spawnPosition: {x: 0, y: 0, z: 0}
   material: {fileID: 2100000, guid: 5a835492e3375d441bf4aeb3189c9625, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: 36304d11233bed748a2d149d9b16c9d3, type: 2}
   blockTypes:
   - blockName: Air
     isSolid: 0
     icon: {fileID: 0}
+    isTransparent: 1
     backFaceTexture: 0
     frontFaceTexture: 0
     topFaceTexture: 0
@@ -1385,7 +1387,8 @@ MonoBehaviour:
     rightFaceTexture: 0
   - blockName: Bedrock
     isSolid: 1
-    icon: {fileID: -4219558403781695398, guid: 6e09414ede5cd4e46b546830500fd2a6, type: 3}
+    icon: {fileID: 1658201283926802149, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 0
     backFaceTexture: 9
     frontFaceTexture: 9
     topFaceTexture: 9
@@ -1394,7 +1397,8 @@ MonoBehaviour:
     rightFaceTexture: 9
   - blockName: Stone
     isSolid: 1
-    icon: {fileID: 5679390536090785944, guid: 6e09414ede5cd4e46b546830500fd2a6, type: 3}
+    icon: {fileID: -9190054672469268964, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 0
     backFaceTexture: 0
     frontFaceTexture: 0
     topFaceTexture: 0
@@ -1403,7 +1407,8 @@ MonoBehaviour:
     rightFaceTexture: 0
   - blockName: Grass
     isSolid: 1
-    icon: {fileID: 5392753449730437660, guid: 6e09414ede5cd4e46b546830500fd2a6, type: 3}
+    icon: {fileID: -2173331863962407998, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 0
     backFaceTexture: 2
     frontFaceTexture: 2
     topFaceTexture: 7
@@ -1412,7 +1417,8 @@ MonoBehaviour:
     rightFaceTexture: 2
   - blockName: Sand
     isSolid: 1
-    icon: {fileID: 6181873364862223445, guid: 6e09414ede5cd4e46b546830500fd2a6, type: 3}
+    icon: {fileID: 4178355347634356053, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 0
     backFaceTexture: 10
     frontFaceTexture: 10
     topFaceTexture: 10
@@ -1421,7 +1427,8 @@ MonoBehaviour:
     rightFaceTexture: 10
   - blockName: Dirt
     isSolid: 1
-    icon: {fileID: -6943373833598557, guid: 6e09414ede5cd4e46b546830500fd2a6, type: 3}
+    icon: {fileID: -8387793910672067857, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 0
     backFaceTexture: 1
     frontFaceTexture: 1
     topFaceTexture: 1
@@ -1430,7 +1437,8 @@ MonoBehaviour:
     rightFaceTexture: 1
   - blockName: Wood
     isSolid: 1
-    icon: {fileID: -7538633921802359561, guid: 6e09414ede5cd4e46b546830500fd2a6, type: 3}
+    icon: {fileID: 8279079627158457885, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 0
     backFaceTexture: 5
     frontFaceTexture: 5
     topFaceTexture: 6
@@ -1439,7 +1447,8 @@ MonoBehaviour:
     rightFaceTexture: 5
   - blockName: Planks
     isSolid: 1
-    icon: {fileID: -9138616440249935319, guid: 6e09414ede5cd4e46b546830500fd2a6, type: 3}
+    icon: {fileID: -5579962401935626545, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 0
     backFaceTexture: 4
     frontFaceTexture: 4
     topFaceTexture: 4
@@ -1448,7 +1457,8 @@ MonoBehaviour:
     rightFaceTexture: 4
   - blockName: Brick
     isSolid: 1
-    icon: {fileID: 448961105294916356, guid: 6e09414ede5cd4e46b546830500fd2a6, type: 3}
+    icon: {fileID: -1190241618586288452, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 0
     backFaceTexture: 11
     frontFaceTexture: 11
     topFaceTexture: 11
@@ -1457,13 +1467,24 @@ MonoBehaviour:
     rightFaceTexture: 11
   - blockName: Cobblestone
     isSolid: 1
-    icon: {fileID: -1501523072523359806, guid: 6e09414ede5cd4e46b546830500fd2a6, type: 3}
+    icon: {fileID: 7391409288775618200, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 0
     backFaceTexture: 8
     frontFaceTexture: 8
     topFaceTexture: 8
     bottomFaceTexture: 8
     leftFaceTexture: 8
     rightFaceTexture: 8
+  - blockName: Glass
+    isSolid: 1
+    icon: {fileID: -1867609910350370242, guid: 3a6c968aa535ca141bbf0b8171cffe11, type: 3}
+    isTransparent: 1
+    backFaceTexture: 3
+    frontFaceTexture: 3
+    topFaceTexture: 3
+    bottomFaceTexture: 3
+    leftFaceTexture: 3
+    rightFaceTexture: 3
   DebugScreen: {fileID: 705373220}
 --- !u!4 &1035755970
 Transform:
@@ -2096,7 +2117,7 @@ MonoBehaviour:
   player: {fileID: 905347139}
   highlight: {fileID: 894021805}
   itemSlots:
-  - itemID: 1
+  - itemID: 10
     icon: {fileID: 3105700021141363684}
   - itemID: 2
     icon: {fileID: 1945552551}
