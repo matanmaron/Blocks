@@ -58,11 +58,11 @@ Preset:
     value: 15
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[0].BlockName
+    propertyPath: blockTypes.Array.data[0].blockName
     value: Air
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[0].IsSolid
+    propertyPath: blockTypes.Array.data[0].isSolid
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -90,11 +90,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[1].BlockName
-    value: Bedrock
+    propertyPath: blockTypes.Array.data[1].blockName
+    value: BedRock
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[1].IsSolid
+    propertyPath: blockTypes.Array.data[1].isSolid
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -122,11 +122,11 @@ Preset:
     value: 9
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[2].BlockName
+    propertyPath: blockTypes.Array.data[2].blockName
     value: Stone
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[2].IsSolid
+    propertyPath: blockTypes.Array.data[2].isSolid
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -154,11 +154,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[3].BlockName
+    propertyPath: blockTypes.Array.data[3].blockName
     value: Grass
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[3].IsSolid
+    propertyPath: blockTypes.Array.data[3].isSolid
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -186,11 +186,11 @@ Preset:
     value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[4].BlockName
+    propertyPath: blockTypes.Array.data[4].blockName
     value: Furnace
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[4].IsSolid
+    propertyPath: blockTypes.Array.data[4].isSolid
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -218,11 +218,11 @@ Preset:
     value: 13
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[5].BlockName
+    propertyPath: blockTypes.Array.data[5].blockName
     value: Sand
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[5].IsSolid
+    propertyPath: blockTypes.Array.data[5].isSolid
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -250,11 +250,11 @@ Preset:
     value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[6].BlockName
+    propertyPath: blockTypes.Array.data[6].blockName
     value: Dirt
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[6].IsSolid
+    propertyPath: blockTypes.Array.data[6].isSolid
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -282,11 +282,11 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[7].BlockName
+    propertyPath: blockTypes.Array.data[7].blockName
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[7].IsSolid
+    propertyPath: blockTypes.Array.data[7].isSolid
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -314,11 +314,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[8].BlockName
+    propertyPath: blockTypes.Array.data[8].blockName
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[8].IsSolid
+    propertyPath: blockTypes.Array.data[8].isSolid
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -346,11 +346,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[9].BlockName
+    propertyPath: blockTypes.Array.data[9].blockName
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[9].IsSolid
+    propertyPath: blockTypes.Array.data[9].isSolid
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -378,11 +378,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[10].BlockName
+    propertyPath: blockTypes.Array.data[10].blockName
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[10].IsSolid
+    propertyPath: blockTypes.Array.data[10].isSolid
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -410,11 +410,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].BlockName
+    propertyPath: blockTypes.Array.data[11].blockName
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[11].IsSolid
+    propertyPath: blockTypes.Array.data[11].isSolid
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -442,11 +442,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].BlockName
+    propertyPath: blockTypes.Array.data[12].blockName
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[12].IsSolid
+    propertyPath: blockTypes.Array.data[12].isSolid
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -474,11 +474,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].BlockName
+    propertyPath: blockTypes.Array.data[13].blockName
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[13].IsSolid
+    propertyPath: blockTypes.Array.data[13].isSolid
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -506,11 +506,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].BlockName
+    propertyPath: blockTypes.Array.data[14].blockName
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: blockTypes.Array.data[14].IsSolid
+    propertyPath: blockTypes.Array.data[14].isSolid
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
