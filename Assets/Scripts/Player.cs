@@ -18,8 +18,8 @@ public class Player : MonoBehaviour
     public Transform placeHighlightBlock;
     public float checkIncrement = 0.1f;
     public float reach = 8;
-    public TextMeshProUGUI SelectedBlockTMP;
     public byte selectedBlockIndex = 1;
+
     Transform cam;
     World world;
     float horizontal;
@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
         cam = GameObject.Find("Main Camera").transform;
         world = GameObject.Find("World").GetComponent<World>();
         Cursor.lockState = CursorLockMode.Locked;
-        SelectedBlockTMP.text = world.blockTypes[selectedBlockIndex].blockName;
     }
     private void FixedUpdate()
     {
@@ -116,28 +115,6 @@ public class Player : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             jumpRequet = true;
-        }
-
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll != 0)
-        {
-            if (scroll > 0) //up
-            {
-                selectedBlockIndex++;
-            }
-            else //down
-            {
-                selectedBlockIndex--;
-            }
-            if (selectedBlockIndex > (byte)world.blockTypes.Length - 1)
-            {
-                selectedBlockIndex = 1;
-            }
-            if (selectedBlockIndex < 1)
-            {
-                selectedBlockIndex = (byte)(world.blockTypes.Length - 1);
-            }
-            SelectedBlockTMP.text = world.blockTypes[selectedBlockIndex].blockName;
         }
 
         if (highlightBlock.gameObject.activeSelf)

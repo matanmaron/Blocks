@@ -227,6 +227,7 @@ public class BlockType
 {
     public string blockName;
     public bool isSolid;
+    public Sprite icon;
 
     [Header("Texture Values")]
     //back,front,top,bottom,left,right
@@ -259,7 +260,10 @@ public enum BlockTypeEnum
     Bedrock,
     Stone,
     Grass,
-    Furnace,
     Sand,
     Dirt,
+    Wood,
+    Planks,
+    Brick,
+    Cobblestone
 }
