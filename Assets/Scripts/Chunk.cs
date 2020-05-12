@@ -6,13 +6,14 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
+using System.Threading;
 
 public class Chunk
 {
     public ChunkCoord coord;
     public byte[,,] voxelMap = new byte[VoxelData.ChunkWidth, VoxelData.ChunkHeight, VoxelData.ChunkWidth];
-    public bool isVoxelMapPopulated = false;
     public Queue<VoxelMod> modifications = new Queue<VoxelMod>();
+    public Vector3 position;
 
     GameObject chunkObject;
     MeshRenderer meshRenderer;
@@ -25,6 +26,8 @@ public class Chunk
     Material[] materials = new Material[2];
     World world;
     bool _isActive;
+    bool isVoxelMapPopulated = false;
+    bool threadLocked = false;
 
     public Chunk (ChunkCoord _chunkCoord, World _world, bool genetateOnLoad)
     {
@@ -34,6 +37,31 @@ public class Chunk
         if (genetateOnLoad)
         {
             Init();
+        }
+    }
+
+    public bool isActive
+    {
+        get { return _isActive; }
+        set
+        {
+            _isActive = value;
+            if (chunkObject != null)
+            {
+                chunkObject.SetActive(value);
+            }
+        }
+    }
+
+    public bool isEditable
+    {
+        get
+        {
+            if (!isVoxelMapPopulated || threadLocked)
+            {
+                return false;
+            }
+            return true;
         }
     }
 
@@ -48,13 +76,20 @@ public class Chunk
         chunkObject.transform.SetParent(world.transform);
         chunkObject.transform.position = new Vector3(coord.x * VoxelData.ChunkWidth, 0, coord.z * VoxelData.ChunkWidth);
         chunkObject.name = $"Chunk {coord.x},{coord.z}";
-
-        PopulateVoxelMap();
-        UpdateChunk();
+        position = chunkObject.transform.position;
+        Thread t = new Thread(new ThreadStart(PopulateVoxelMap));
+        t.Start();
     }
 
     public void UpdateChunk()
     {
+        Thread t = new Thread(new ThreadStart(_updateChunk));
+        t.Start();
+    }
+
+    void _updateChunk()
+    {
+        threadLocked = true;
         while (modifications.Count > 0)
         {
             VoxelMod v = modifications.Dequeue();
@@ -75,7 +110,11 @@ public class Chunk
                 }
             }
         }
-        CreateMesh();
+        lock (world.chunksToDraw)
+        {
+            world.chunksToDraw.Enqueue(this);
+        }
+        threadLocked = false;
     }
 
     void ClearMeshData()
@@ -122,8 +161,8 @@ public class Chunk
         int xCheck = Mathf.FloorToInt(pos.x);
         int yCheck = Mathf.FloorToInt(pos.y);
         int zCheck = Mathf.FloorToInt(pos.z);
-        xCheck -= Mathf.FloorToInt(chunkObject.transform.position.x);
-        zCheck -= Mathf.FloorToInt(chunkObject.transform.position.z);
+        xCheck -= Mathf.FloorToInt(position.x);
+        zCheck -= Mathf.FloorToInt(position.z);
         return voxelMap[xCheck, yCheck, zCheck];
     }
 
@@ -139,10 +178,11 @@ public class Chunk
                 }
             }
         }
+        _updateChunk();
         isVoxelMapPopulated = true;
     }
 
-    private void CreateMesh()
+    public void CreateMesh()
     {
         Mesh mesh = new Mesh();
         mesh.vertices = vertices.ToArray();
@@ -152,23 +192,6 @@ public class Chunk
         mesh.uv = uvs.ToArray();
         mesh.RecalculateNormals();
         meshFilter.mesh = mesh;
-    }
-
-    public bool isActive
-    {
-        get { return _isActive; }
-        set
-        {
-            _isActive = value;
-            if (chunkObject != null)
-            {
-                chunkObject.SetActive(value);
-            }
-        }
-    }
-    public Vector3 position
-    {
-        get { return chunkObject.transform.position; }
     }
 
     public void EditVoxel (Vector3 pos, byte newID)
