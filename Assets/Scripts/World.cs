@@ -24,6 +24,16 @@ public class World : MonoBehaviour
     Queue<Queue<VoxelMod>> modifications = new Queue<Queue<VoxelMod>>();
     List<Chunk> chunksToUpdate = new List<Chunk>();
     bool applyingModifications = false;
+    bool _inUI = false;
+
+    public bool inUI
+    {
+        get { return _inUI; }
+        set
+        {
+            _inUI = value;
+        }
+    }
 
     private void Start()
     {
