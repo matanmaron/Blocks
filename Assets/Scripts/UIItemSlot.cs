@@ -82,6 +82,7 @@ public class UIItemSlot : MonoBehaviour
 public class ItemSlot
 {
     public ItemStack stack = null;
+    public bool isCreative;
 
     UIItemSlot uIItemSlot = null;
 
@@ -109,6 +110,19 @@ public class ItemSlot
             }
             return false;
         }
+    }
+
+    public ItemStack TakeAll()
+    {
+        ItemStack handOver = new ItemStack(stack.id, stack.amout);
+        EmptySlot();
+        return handOver;
+    }
+
+    public void InsertStack (ItemStack _stack)
+    {
+        stack = _stack;
+        uIItemSlot.UpdateSlot();
     }
 
     public void LinkUISlot(UIItemSlot uiSlot)

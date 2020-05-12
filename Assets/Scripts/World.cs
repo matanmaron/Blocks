@@ -16,6 +16,8 @@ public class World : MonoBehaviour
     public BlockType[] blockTypes;
     public GameObject DebugScreen;
     public Queue<Chunk> chunksToDraw = new Queue<Chunk>();
+    public GameObject creativeInventoryWindow;
+    public GameObject cursorSlot;
 
     Chunk[,] chunks = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
     List<ChunkCoord> activeChunks = new List<ChunkCoord>();
@@ -32,13 +34,24 @@ public class World : MonoBehaviour
         set
         {
             _inUI = value;
+            if (_inUI)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                creativeInventoryWindow.SetActive(true);
+                cursorSlot.SetActive(true);
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                creativeInventoryWindow.SetActive(false);
+                cursorSlot.SetActive(false);
+            }
         }
     }
 
     private void Start()
     {
         Random.InitState(seed);
-
         spawnPosition = new Vector3(VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2, VoxelData.ChunkHeight -50, VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2);
         GenerateWorld();
         playerChunkCoord = GetChunkCoordFromVector3(player.position);
@@ -327,6 +340,7 @@ public class BlockType
     public bool isSolid;
     public Sprite icon;
     public bool isTransparent;
+    //stack size??
 
     [Header("Texture Values")]
     //back,front,top,bottom,left,right
