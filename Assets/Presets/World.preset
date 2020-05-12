@@ -54,8 +54,12 @@ Preset:
     value: 
     objectReference: {fileID: 2100000, guid: 5a835492e3375d441bf4aeb3189c9625, type: 2}
   - target: {fileID: 0}
+    propertyPath: transparentMaterial
+    value: 
+    objectReference: {fileID: 2100000, guid: 36304d11233bed748a2d149d9b16c9d3, type: 2}
+  - target: {fileID: 0}
     propertyPath: blockTypes.Array.size
-    value: 11
+    value: 12
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].blockName
@@ -71,7 +75,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].isTransparent
-    value: 0
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].backFaceTexture
@@ -506,6 +510,47 @@ Preset:
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[10].rightFaceTexture
     value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].blockName
+    value: Leaves
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].isSolid
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].icon
+    value: 
+    objectReference: {fileID: -1867609910350370242, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].isTransparent
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].backFaceTexture
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].frontFaceTexture
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].topFaceTexture
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].bottomFaceTexture
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].leftFaceTexture
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[11].rightFaceTexture
+    value: 16
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: DebugScreen

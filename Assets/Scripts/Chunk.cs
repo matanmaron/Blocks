@@ -12,6 +12,7 @@ public class Chunk
     public ChunkCoord coord;
     public byte[,,] voxelMap = new byte[VoxelData.ChunkWidth, VoxelData.ChunkHeight, VoxelData.ChunkWidth];
     public bool isVoxelMapPopulated = false;
+    public Queue<VoxelMod> modifications = new Queue<VoxelMod>();
 
     GameObject chunkObject;
     MeshRenderer meshRenderer;
@@ -52,8 +53,14 @@ public class Chunk
         UpdateChunk();
     }
 
-    private void UpdateChunk()
+    public void UpdateChunk()
     {
+        while (modifications.Count > 0)
+        {
+            VoxelMod v = modifications.Dequeue();
+            Vector3 pos = v.position -= position;
+            voxelMap[(int)pos.x, (int)pos.y, (int)pos.z] = v.id;
+        }
         ClearMeshData();
         for (int y = 0; y < VoxelData.ChunkHeight; y++)
         {
