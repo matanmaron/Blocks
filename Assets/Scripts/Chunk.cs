@@ -28,6 +28,7 @@ public class Chunk
     bool _isActive;
     bool isVoxelMapPopulated = false;
     bool threadLocked = false;
+    List<Color> colors = new List<Color>();
 
     public Chunk (ChunkCoord _chunkCoord, World _world, bool genetateOnLoad)
     {
@@ -124,6 +125,7 @@ public class Chunk
         triangles.Clear();
         transparentTriangles.Clear();
         uvs.Clear();
+        colors.Clear();
     }
 
     private bool CheckVoxel(Vector3 pos)
@@ -190,6 +192,7 @@ public class Chunk
         mesh.SetTriangles(triangles.ToArray(),0);
         mesh.SetTriangles(transparentTriangles.ToArray(),1);
         mesh.uv = uvs.ToArray();
+        mesh.colors = colors.ToArray();
         mesh.RecalculateNormals();
         meshFilter.mesh = mesh;
     }
@@ -250,6 +253,27 @@ public class Chunk
                 vertices.Add(pos + VoxelData.voxelVerts[VoxelData.voxelTris[i,3]]);
 
                 AddTexture(world.blockTypes[blockID].GetTextureID(i));
+
+                float lightLevel = 0;
+                int yPos = (int)pos.y + 1;
+                bool inShade = false;
+                while (yPos < VoxelData.ChunkHeight)
+                {
+                    if (voxelMap[(int)pos.x, yPos, (int)pos.z] != 0)
+                    {
+                        inShade = true;
+                        break;
+                    }
+                    yPos++;
+                }
+                if (inShade)
+                {
+                    lightLevel = 0.4f;
+                }
+                colors.Add(new Color(0, 0, 0, lightLevel));
+                colors.Add(new Color(0, 0, 0, lightLevel));
+                colors.Add(new Color(0, 0, 0, lightLevel));
+                colors.Add(new Color(0, 0, 0, lightLevel));
 
                 if (!isTransparent)
                 {

@@ -18,6 +18,9 @@ public class World : MonoBehaviour
     public Queue<Chunk> chunksToDraw = new Queue<Chunk>();
     public GameObject creativeInventoryWindow;
     public GameObject cursorSlot;
+    [Range(0.95f,0)] public float globalLightLevel;
+    public Color day;
+    public Color night;
 
     Chunk[,] chunks = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
     List<ChunkCoord> activeChunks = new List<ChunkCoord>();
@@ -61,6 +64,8 @@ public class World : MonoBehaviour
     private void Update()
     {
         playerChunkCoord = GetChunkCoordFromVector3(player.position);
+        Shader.SetGlobalFloat("GlobalLightLevel", globalLightLevel);
+        Camera.main.backgroundColor = Color.Lerp(day, night, globalLightLevel);
         if (!playerChunkCoord.Equals(playerLastChunkCoord))
         {
             CheckViewDistance();
