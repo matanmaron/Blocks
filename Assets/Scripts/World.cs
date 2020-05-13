@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.XR.WSA;
-using System.Threading;
+using System.IO;
 
 public class World : MonoBehaviour
 {
     [Header("World Generation Values")]
-    public int seed;
     public BiomAttributes biome;
-    [Header("Performance")]
-    public bool enableThreding;
+
     [Header("Light")]
     [Range(0,1f)] public float globalLightLevel;
     public Color day;
     public Color night;
+
     [Header("Other")]
     public Transform player;
     public Vector3 spawnPosition;
@@ -29,6 +28,7 @@ public class World : MonoBehaviour
     public GameObject cursorSlot;
     public object chunkUpdateThreadLock = new object();
     public List<Chunk> chunksToUpdate = new List<Chunk>();
+    public Settings settings;
 
     Chunk[,] chunks = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
     List<ChunkCoord> activeChunks = new List<ChunkCoord>();
@@ -62,10 +62,10 @@ public class World : MonoBehaviour
 
     private void Start()
     {
-        Random.InitState(seed);
+        Random.InitState(settings.Seed);
         Shader.SetGlobalFloat("MinGlobalLightLevel", VoxelData.minGlobalLightLevel);
         Shader.SetGlobalFloat("MaxGlobalLightLevel", VoxelData.maxGlobalLightLevel);
-        if (enableThreding)
+        if (settings.EnableThreading)
         {
             chunkUpdateThread = new Thread(new ThreadStart(ThreadedUpdate));
             chunkUpdateThread.Start();
@@ -101,7 +101,7 @@ public class World : MonoBehaviour
         {
             DebugScreen.SetActive(!DebugScreen.activeSelf);
         }
-        if (!enableThreding)
+        if (!settings.EnableThreading)
         {
             if (!applyingModifications)
             {
@@ -117,9 +117,9 @@ public class World : MonoBehaviour
 
     void GenerateWorld()
     {
-        for (int x = (VoxelData.WorldSizeInChunks/2) - VoxelData.ViewDistanceInChunks; x < (VoxelData.WorldSizeInChunks / 2) + VoxelData.ViewDistanceInChunks; x++)
+        for (int x = (VoxelData.WorldSizeInChunks/2) - settings.ViewDistance; x < (VoxelData.WorldSizeInChunks / 2) + settings.ViewDistance; x++)
         {
-            for (int z = (VoxelData.WorldSizeInChunks / 2) - VoxelData.ViewDistanceInChunks; z < (VoxelData.WorldSizeInChunks / 2) + VoxelData.ViewDistanceInChunks; z++)
+            for (int z = (VoxelData.WorldSizeInChunks / 2) - settings.ViewDistance; z < (VoxelData.WorldSizeInChunks / 2) + settings.ViewDistance; z++)
             {
                 ChunkCoord newChunk = new ChunkCoord(x, z);
                 chunks[x, z] = new Chunk(newChunk, this);
@@ -177,7 +177,7 @@ public class World : MonoBehaviour
 
     private void OnDisable()
     {
-        if (enableThreding)
+        if (settings.EnableThreading)
         {
             chunkUpdateThread.Abort();
         }
@@ -225,9 +225,9 @@ public class World : MonoBehaviour
         playerLastChunkCoord = playerChunkCoord;
         activeChunks.Clear();
 
-        for (int x = coord.x - VoxelData.ViewDistanceInChunks; x < coord.x + VoxelData.ViewDistanceInChunks; x++)
+        for (int x = coord.x - settings.ViewDistance; x < coord.x + settings.ViewDistance; x++)
         {
-            for (int z = coord.z - VoxelData.ViewDistanceInChunks; z < coord.z + VoxelData.ViewDistanceInChunks; z++)
+            for (int z = coord.z - settings.ViewDistance; z < coord.z + settings.ViewDistance; z++)
             {
                 if (IsChunkInWorld(new ChunkCoord(x,z)))
                 {
@@ -431,6 +431,23 @@ public class VoxelMod
         position = _pos;
         id = _id;
     }
+}
+
+[System.Serializable]
+public class Settings
+{
+    [Header("Game Data")]
+    public string Version;
+
+    [Header("Performance")]
+    public int ViewDistance;
+    public bool EnableThreading;
+
+    [Header("Controls")]
+    [Range(0.2f,10f)] public float MouseSensitivity;
+
+    [Header("World Gen")]
+    public int Seed;
 }
 
 public enum BlockTypeEnum
