@@ -6,8 +6,19 @@ using UnityEngine.XR.WSA;
 
 public class World : MonoBehaviour
 {
+    [Header("World Generation Values")]
     public int seed;
     public BiomAttributes biome;
+
+    [Header("Performance")]
+    public bool enableThreding;
+
+    [Header("Light")]
+    [Range(0,1f)] public float globalLightLevel;
+    public Color day;
+    public Color night;
+
+    [Header("Other")]
     public Transform player;
     public Vector3 spawnPosition;
     public ChunkCoord playerChunkCoord;
@@ -18,9 +29,6 @@ public class World : MonoBehaviour
     public Queue<Chunk> chunksToDraw = new Queue<Chunk>();
     public GameObject creativeInventoryWindow;
     public GameObject cursorSlot;
-    [Range(0.95f,0)] public float globalLightLevel;
-    public Color day;
-    public Color night;
 
     Chunk[,] chunks = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
     List<ChunkCoord> activeChunks = new List<ChunkCoord>();
@@ -55,6 +63,8 @@ public class World : MonoBehaviour
     private void Start()
     {
         Random.InitState(seed);
+        Shader.SetGlobalFloat("MinGlobalLightLevel", VoxelData.minGlobalLightLevel);
+        Shader.SetGlobalFloat("MaxGlobalLightLevel", VoxelData.maxGlobalLightLevel);
         spawnPosition = new Vector3(VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2, VoxelData.ChunkHeight -50, VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2);
         GenerateWorld();
         playerChunkCoord = GetChunkCoordFromVector3(player.position);
@@ -65,7 +75,7 @@ public class World : MonoBehaviour
     {
         playerChunkCoord = GetChunkCoordFromVector3(player.position);
         Shader.SetGlobalFloat("GlobalLightLevel", globalLightLevel);
-        Camera.main.backgroundColor = Color.Lerp(day, night, globalLightLevel);
+        Camera.main.backgroundColor = Color.Lerp(night, day, globalLightLevel);
         if (!playerChunkCoord.Equals(playerLastChunkCoord))
         {
             CheckViewDistance();
@@ -230,23 +240,23 @@ public class World : MonoBehaviour
         }
         if (chunks[thisChunk.x,thisChunk.z] != null && chunks[thisChunk.x,thisChunk.z].isEditable)
         {
-            return blockTypes[chunks[thisChunk.x, thisChunk.z].GetVoxelFromGlobalVector3(pos)].isSolid;
+            return blockTypes[chunks[thisChunk.x, thisChunk.z].GetVoxelFromGlobalVector3(pos).id].isSolid;
         }
         return blockTypes[GetVoxel(pos)].isSolid;
     }
 
-    public bool CheckIfVoxelTransparent(Vector3 pos)
+    public VoxelState GetVoxelState(Vector3 pos)
     {
         ChunkCoord thisChunk = new ChunkCoord(pos);
         if (!IsVoxelInWorld(pos))
         {
-            return false;
+            return null;
         }
         if (chunks[thisChunk.x, thisChunk.z] != null && chunks[thisChunk.x, thisChunk.z].isEditable)
         {
-            return blockTypes[chunks[thisChunk.x, thisChunk.z].GetVoxelFromGlobalVector3(pos)].isTransparent;
+            return chunks[thisChunk.x, thisChunk.z].GetVoxelFromGlobalVector3(pos);
         }
-        return blockTypes[GetVoxel(pos)].isTransparent;
+        return new VoxelState(GetVoxel(pos));
     }
 
     public byte GetVoxel(Vector3 pos)
@@ -344,7 +354,8 @@ public class BlockType
     public string blockName;
     public bool isSolid;
     public Sprite icon;
-    public bool isTransparent;
+    public bool renderNeighborFaces;
+    public float trasparency;
     //stack size??
 
     [Header("Texture Values")]
