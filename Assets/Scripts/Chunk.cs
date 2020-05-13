@@ -27,6 +27,7 @@ public class Chunk
     bool _isActive;
     bool isVoxelMapPopulated = false;
     List<Color> colors = new List<Color>();
+    List<Vector3> normals = new List<Vector3>();
 
     public Chunk (ChunkCoord _chunkCoord, World _world)
     {
@@ -160,6 +161,7 @@ public class Chunk
         transparentTriangles.Clear();
         uvs.Clear();
         colors.Clear();
+        normals.Clear();
     }
 
     private VoxelState CheckVoxel(Vector3 pos)
@@ -230,7 +232,7 @@ public class Chunk
         mesh.SetTriangles(transparentTriangles.ToArray(),1);
         mesh.uv = uvs.ToArray();
         mesh.colors = colors.ToArray();
-        mesh.RecalculateNormals();
+        mesh.normals = normals.ToArray();
         meshFilter.mesh = mesh;
     }
 
@@ -296,6 +298,11 @@ public class Chunk
                 vertices.Add(pos + VoxelData.voxelVerts[VoxelData.voxelTris[i,2]]);
                 vertices.Add(pos + VoxelData.voxelVerts[VoxelData.voxelTris[i,3]]);
 
+                for (int j = 0; j < 4; j++)
+                {
+                    normals.Add(VoxelData.faceChecks[i]);
+                }
+
                 AddTexture(world.blockTypes[blockID].GetTextureID(i));
 
                 float lightLevel = neighbor.globalLightPercent;
@@ -305,7 +312,7 @@ public class Chunk
                 colors.Add(new Color(0, 0, 0, lightLevel));
                 colors.Add(new Color(0, 0, 0, lightLevel));
 
-                if (!isTransparent)
+                if (!world.blockTypes[neighbor.id].renderNeighborFaces)
                 {
                     triangles.Add(vertexIndex);
                     triangles.Add(vertexIndex + 1);

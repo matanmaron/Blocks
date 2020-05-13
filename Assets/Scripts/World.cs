@@ -4,6 +4,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.XR.WSA;
 using System.IO;
+using System;
 
 public class World : MonoBehaviour
 {
@@ -48,12 +49,14 @@ public class World : MonoBehaviour
             if (_inUI)
             {
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 creativeInventoryWindow.SetActive(true);
                 cursorSlot.SetActive(true);
             }
             else
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 creativeInventoryWindow.SetActive(false);
                 cursorSlot.SetActive(false);
             }
@@ -62,7 +65,9 @@ public class World : MonoBehaviour
 
     private void Start()
     {
-        Random.InitState(settings.Seed);
+        //settings.Export(settings);
+        settings = settings.Import();
+        UnityEngine.Random.InitState(settings.Seed);
         Shader.SetGlobalFloat("MinGlobalLightLevel", VoxelData.minGlobalLightLevel);
         Shader.SetGlobalFloat("MaxGlobalLightLevel", VoxelData.maxGlobalLightLevel);
         if (settings.EnableThreading)
@@ -70,18 +75,22 @@ public class World : MonoBehaviour
             chunkUpdateThread = new Thread(new ThreadStart(ThreadedUpdate));
             chunkUpdateThread.Start();
         }
+        SetGlobalLightValue();
         spawnPosition = new Vector3(VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2, VoxelData.ChunkHeight -50, VoxelData.WorldSizeInChunks * VoxelData.ChunkWidth / 2);
         GenerateWorld();
         playerChunkCoord = GetChunkCoordFromVector3(player.position);
         playerLastChunkCoord = playerChunkCoord;
+    }
 
+    public void SetGlobalLightValue()
+    {
+        Shader.SetGlobalFloat("GlobalLightLevel", globalLightLevel);
+        Camera.main.backgroundColor = Color.Lerp(night, day, globalLightLevel);
     }
 
     private void Update()
     {
         playerChunkCoord = GetChunkCoordFromVector3(player.position);
-        Shader.SetGlobalFloat("GlobalLightLevel", globalLightLevel);
-        Camera.main.backgroundColor = Color.Lerp(night, day, globalLightLevel);
         if (!playerChunkCoord.Equals(playerLastChunkCoord))
         {
             CheckViewDistance();
@@ -149,7 +158,10 @@ public class World : MonoBehaviour
                 {
                     chunksToUpdate[index].UpdateChunk();
                     chunksToUpdate.RemoveAt(index);
-                    activeChunks.Add(chunksToUpdate[index].coord);
+                    if (!activeChunks.Contains(chunksToUpdate[index].coord))
+                    {
+                        activeChunks.Add(chunksToUpdate[index].coord);
+                    }
                     updated = true;
                 }
                 else
@@ -229,22 +241,23 @@ public class World : MonoBehaviour
         {
             for (int z = coord.z - settings.ViewDistance; z < coord.z + settings.ViewDistance; z++)
             {
-                if (IsChunkInWorld(new ChunkCoord(x,z)))
+                ChunkCoord thisChunkCoord = new ChunkCoord(x, z);
+                if (IsChunkInWorld(thisChunkCoord))
                 {
                     if (chunks[x,z] == null)
                     {
-                        chunks[x, z] = new Chunk(new ChunkCoord(x, z), this);
-                        chunksToCreate.Add(new ChunkCoord(x, z));
+                        chunks[x, z] = new Chunk(thisChunkCoord, this);
+                        chunksToCreate.Add(thisChunkCoord);
                     }
                     else if(!chunks[x,z].isActive)
                     {
                         chunks[x, z].isActive = true;
-                        activeChunks.Add(new ChunkCoord(x, z));
+                        activeChunks.Add(thisChunkCoord);
                     }
                 }
                 for (int i = 0; i < prevActiveChunks.Count; i++)
                 { 
-                    if (prevActiveChunks[i].Equal(new ChunkCoord(x,z)))
+                    if (prevActiveChunks[i].Equal(thisChunkCoord))
                     {
                         prevActiveChunks.RemoveAt(i);
                     }
@@ -445,9 +458,22 @@ public class Settings
 
     [Header("Controls")]
     [Range(0.2f,10f)] public float MouseSensitivity;
+    public bool InvertMouseWheel;
 
     [Header("World Gen")]
     public int Seed;
+
+    internal void Export(Settings settings)
+    {
+        string jsonExport = JsonUtility.ToJson(settings);
+        File.WriteAllText(Application.dataPath + "/settings.dat", jsonExport);
+    }
+
+    internal Settings Import()
+    {
+        string jsonImport = File.ReadAllText(Application.dataPath + "/settings.dat");
+        return JsonUtility.FromJson<Settings>(jsonImport);
+    }
 }
 
 public enum BlockTypeEnum
