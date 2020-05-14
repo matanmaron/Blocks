@@ -26,9 +26,21 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: biome
+    propertyPath: biomes.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: biomes.Array.data[0]
     value: 
     objectReference: {fileID: 11400000, guid: 68b3ab29b9bf73747b1466ef1a74180b, type: 2}
+  - target: {fileID: 0}
+    propertyPath: biomes.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: f47b81d2a106de34a91f5fd267a8f930, type: 2}
+  - target: {fileID: 0}
+    propertyPath: biomes.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: f6e023d3e1ce84046bc0e34aa77fb2ee, type: 2}
   - target: {fileID: 0}
     propertyPath: globalLightLevel
     value: 0.95
@@ -91,7 +103,7 @@ Preset:
     objectReference: {fileID: 2100000, guid: 36304d11233bed748a2d149d9b16c9d3, type: 2}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.size
-    value: 12
+    value: 14
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: blockTypes.Array.data[0].blockName
@@ -633,6 +645,96 @@ Preset:
     value: 16
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].blockName
+    value: Cactus
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].isSolid
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].icon
+    value: 
+    objectReference: {fileID: -1867609910350370242, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].renderNeighborFaces
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].trasparency
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].backFaceTexture
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].frontFaceTexture
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].topFaceTexture
+    value: 19
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].bottomFaceTexture
+    value: 19
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].leftFaceTexture
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[12].rightFaceTexture
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].blockName
+    value: CactusTop
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].isSolid
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].icon
+    value: 
+    objectReference: {fileID: -1867609910350370242, guid: 3a6c968aa535ca141bbf0b8171cffe11,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].renderNeighborFaces
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].trasparency
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].backFaceTexture
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].frontFaceTexture
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].topFaceTexture
+    value: 17
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].bottomFaceTexture
+    value: 19
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].leftFaceTexture
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: blockTypes.Array.data[13].rightFaceTexture
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: DebugScreen
     value: 
     objectReference: {fileID: 0}
@@ -646,14 +748,18 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: settings.Version
-    value: 
+    value: 0.0.0.1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: settings.ViewDistance
-    value: 2
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: settings.EnableThreading
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: settings.EnableAnimatedChunks
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -661,6 +767,6 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: settings.Seed
-    value: 0
+    propertyPath: settings.InvertMouseWheel
+    value: 1
     objectReference: {fileID: 0}

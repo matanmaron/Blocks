@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Forest
   m_EditorClassIdentifier: Assembly-CSharp::BiomAttributes
+  m_Name: Forest
+  m_EditorClassIdentifier: 
   biomeName: Forest
   offset: 87544
   scale: 0.17
@@ -19,12 +21,26 @@ MonoBehaviour:
   terrainScale: 0.3
   surfaceBlock: 5
   subSurfaceBlock: 5
-  floraType: 0
+  majorFloraIndex: 0
   majorFloraZoneScale: 1.3
   majorFloraZoneThreshold: 0.384
-  majorFloraPlacementScale: 15
+  majorFloraPlacementScale: 5
   majorFloraPlacementThreshold: 0.755
   placeMajorFlora: 1
-  maxHeight: 12
-  minHeight: 5
-  lodes: []
+  majorFloraMaxTreeHeight: 16
+  majorFloraMinTreeHeight: 5
+  lodes:
+  - nodeName: Dirt
+    blockID: 5
+    minHeight: 1
+    maxHeight: 255
+    scale: 0.1
+    threshold: 0.5
+    noiseOffset: 0
+  - nodeName: Sand
+    blockID: 4
+    minHeight: 30
+    maxHeight: 60
+    scale: 0.2
+    threshold: 0.6
+    noiseOffset: 500

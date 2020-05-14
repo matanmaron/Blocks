@@ -7,6 +7,7 @@ public class BiomAttributes : ScriptableObject
 {
     [Header("Major Flora")]
     public string biomeName;
+
     public int offset;
     public float scale;
 
@@ -28,16 +29,4 @@ public class BiomAttributes : ScriptableObject
     public int minHeight = 5;
 
     public Lode[] lodes;
-}
-
-[System.Serializable]
-public class Lode
-{
-    public string nodeName;
-    public byte blockID;
-    public int minHeight;
-    public int maxHeight;
-    public float scale;
-    public float threshold;
-    public float noiseOffset;
 }

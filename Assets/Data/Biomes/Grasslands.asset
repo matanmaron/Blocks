@@ -29,14 +29,14 @@ MonoBehaviour:
   minHeight: 5
   lodes:
   - nodeName: Dirt
-    blockID: 6
+    blockID: 5
     minHeight: 1
     maxHeight: 255
     scale: 0.1
     threshold: 0.5
     noiseOffset: 0
   - nodeName: Sand
-    blockID: 5
+    blockID: 4
     minHeight: 30
     maxHeight: 60
     scale: 0.2
