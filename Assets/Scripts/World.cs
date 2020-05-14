@@ -66,9 +66,8 @@ public class World : MonoBehaviour
 
     private void Start()
     {
-        settings.Export(settings);
-        settings = settings.Import();
-        UnityEngine.Random.InitState(settings.Seed);
+        Debug.Log($"Seed id: {VoxelData.seed}");
+        UnityEngine.Random.InitState(VoxelData.seed);
         Shader.SetGlobalFloat("MinGlobalLightLevel", VoxelData.minGlobalLightLevel);
         Shader.SetGlobalFloat("MaxGlobalLightLevel", VoxelData.maxGlobalLightLevel);
         if (settings.EnableThreading)
@@ -473,31 +472,16 @@ public class VoxelMod
 public class Settings
 {
     [Header("Game Data")]
-    public string Version;
+    public string Version = "0.0.0.1";
 
     [Header("Performance")]
-    public int ViewDistance;
-    public bool EnableThreading;
-    public bool EnableAnimatedChunks;
+    public int ViewDistance = 8;
+    public bool EnableThreading = true;
+    public bool EnableAnimatedChunks = false;
 
     [Header("Controls")]
-    [Range(0.2f,10f)] public float MouseSensitivity;
-    public bool InvertMouseWheel;
-
-    [Header("World Gen")]
-    public int Seed;
-
-    internal void Export(Settings settings)
-    {
-        string jsonExport = JsonUtility.ToJson(settings);
-        File.WriteAllText(Application.dataPath + "/settings.dat", jsonExport);
-    }
-
-    internal Settings Import()
-    {
-        string jsonImport = File.ReadAllText(Application.dataPath + "/settings.dat");
-        return JsonUtility.FromJson<Settings>(jsonImport);
-    }
+    [Range(0.2f,10f)] public float MouseSensitivity = 1f;
+    public bool InvertMouseWheel = false;
 }
 
 public enum BlockTypeEnum
