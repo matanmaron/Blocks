@@ -347,7 +347,7 @@ public class World : MonoBehaviour
         sumOfHeights /= count;
         int terrainHeight = Mathf.FloorToInt(sumOfHeights + solideGroundHeight);
         //basic terrain
-        byte voxelValue = 0;
+        byte voxelValue = (int)BlockTypeEnum.Stone;
         if (yPos == terrainHeight)
         {
             voxelValue = (byte)biome.surfaceBlock;
@@ -359,10 +359,6 @@ public class World : MonoBehaviour
         else if (yPos > terrainHeight)
         {
             return (int)BlockTypeEnum.Air;
-        }
-        else
-        {
-            voxelValue = (int)BlockTypeEnum.Stone;
         }
         //second pass
         if (voxelValue == (int)BlockTypeEnum.Stone)
