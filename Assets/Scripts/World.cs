@@ -9,7 +9,7 @@ using System;
 public class World : MonoBehaviour
 {
     [Header("World Generation Values")]
-    public BiomAttributes biome;
+    public BiomAttributes[] biomes;
 
     [Header("Light")]
     [Range(0,1f)] public float globalLightLevel;
@@ -39,6 +39,7 @@ public class World : MonoBehaviour
     bool applyingModifications = false;
     bool _inUI = false;
     Thread chunkUpdateThread;
+    const int solideGroundHeight = 42;
 
     public bool inUI
     {
@@ -65,7 +66,7 @@ public class World : MonoBehaviour
 
     private void Start()
     {
-        //settings.Export(settings);
+        settings.Export(settings);
         settings = settings.Import();
         UnityEngine.Random.InitState(settings.Seed);
         Shader.SetGlobalFloat("MinGlobalLightLevel", VoxelData.minGlobalLightLevel);
@@ -317,17 +318,43 @@ public class World : MonoBehaviour
             return (int)BlockTypeEnum.Bedrock;
         }
 
+        //biome selection pass
+        float sumOfHeights = 0f;
+        int count = 0;
+        float strongestWeight = 0;
+        int strongestWeightIndex = 0;
+        for (int i = 0; i < biomes.Length; i++)
+        {
+            float weight = Noise.Get2DPerlin(new Vector2(pos.x, pos.z), biomes[i].offset, biomes[i].scale);
+            //get srotger biome
+            if (weight > strongestWeight)
+            {
+                strongestWeight = weight;
+                strongestWeightIndex = i;
+            }
+            //get terrain height
+            float height = biomes[i].terrainHeight * Noise.Get2DPerlin(new Vector2(pos.x, pos.y), 0, biomes[i].terrainScale) * weight;
+            if (height > 0)
+            {
+                sumOfHeights += height;
+                count++;
+            }
+        }
+        //set biome
+        BiomAttributes biome = biomes[strongestWeightIndex];
+
+        //get avrage
+        sumOfHeights /= count;
+        int terrainHeight = Mathf.FloorToInt(sumOfHeights + solideGroundHeight);
         //basic terrain
-        float perlin = Noise.Get2DPerlin(new Vector2(pos.x, pos.z), 0, biome.terrainScale);
-        int terrainHeight = Mathf.FloorToInt(biome.terrainHeight * perlin) + biome.solideGroundHeight;
         byte voxelValue = 0;
         if (yPos == terrainHeight)
         {
-            voxelValue = (int)BlockTypeEnum.Grass;
+            voxelValue = (byte)biome.surfaceBlock;
         }
         else if (yPos < terrainHeight && yPos > terrainHeight - 4)
         {
-            voxelValue = (int)BlockTypeEnum.Dirt;
+            voxelValue = (byte)biome.subSurfaceBlock;
         }
         else if (yPos > terrainHeight)
         {
@@ -352,13 +379,13 @@ public class World : MonoBehaviour
             }
         }
         //trees
-        if (yPos == terrainHeight)
+        if (yPos == terrainHeight && biome.placeMajorFlora)
         {
-            if (Noise.Get2DPerlin(new Vector2(pos.x,pos.z), 0, biome.treeZoneScale) > biome.treeZoneThreshold)
+            if (Noise.Get2DPerlin(new Vector2(pos.x,pos.z), 0, biome.majorFloraZoneScale) > biome.majorFloraZoneThreshold)
             {
-                if (Noise.Get2DPerlin(new Vector2(pos.x, pos.z), 0, biome.treePlacementScale) > biome.treePlacementThreshold)
+                if (Noise.Get2DPerlin(new Vector2(pos.x, pos.z), 0, biome.majorFloraPlacementScale) > biome.majorFloraPlacementThreshold)
                 {
-                    modifications.Enqueue(Structure.MakeTree(pos, biome.minTreeHeight, biome.maxTreeHeight));
+                    modifications.Enqueue(Structure.GenerateMajorFlora(biome.floraType, pos, biome.minHeight, biome.maxHeight));
                 }
             }
         }
@@ -455,6 +482,7 @@ public class Settings
     [Header("Performance")]
     public int ViewDistance;
     public bool EnableThreading;
+    public bool EnableAnimatedChunks;
 
     [Header("Controls")]
     [Range(0.2f,10f)] public float MouseSensitivity;
@@ -489,5 +517,7 @@ public enum BlockTypeEnum
     Brick,
     Cobblestone,
     Glass,
-    Leaves
+    Leaves,
+    Cactus,
+    CactusTop
 }

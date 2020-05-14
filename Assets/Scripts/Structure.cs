@@ -4,6 +4,15 @@ using UnityEngine;
 
 public static class Structure
 {
+    public static Queue<VoxelMod> GenerateMajorFlora(floraTypeEnum index, Vector3 pos, int minTrunkHeight, int maxTrunkHeight)
+    {
+        switch (index)
+        {
+            case floraTypeEnum.Tree: return MakeTree(pos, minTrunkHeight, maxTrunkHeight);
+            case floraTypeEnum.Cactus: return MakeCacti(pos, minTrunkHeight, maxTrunkHeight);
+        }
+        return new Queue<VoxelMod>();
+    }
     public static Queue<VoxelMod> MakeTree(Vector3 pos, int minTrunkHeight, int maxTrunkHeight)
     {
         Queue<VoxelMod> queue = new Queue<VoxelMod>();
@@ -29,4 +38,27 @@ public static class Structure
         }
         return queue;
     }
+
+    public static Queue<VoxelMod> MakeCacti(Vector3 pos, int minTrunkHeight, int maxTrunkHeight)
+    {
+        Queue<VoxelMod> queue = new Queue<VoxelMod>();
+        int height = (int)(maxTrunkHeight * Noise.Get2DPerlin(new Vector2(pos.x, pos.z), 23456f, 2f));
+        if (height < minTrunkHeight)
+        {
+            height = minTrunkHeight;
+        }
+        for (int i = 1; i < height; i++)
+        {
+            queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + i, pos.z), (int)BlockTypeEnum.Cactus));
+        }
+        queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + height, pos.z), (int)BlockTypeEnum.CactusTop));
+
+        return queue;
+    }
+}
+
+public enum floraTypeEnum
+{
+    Tree,
+    Cactus
 }

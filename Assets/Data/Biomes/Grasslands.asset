@@ -10,12 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Default
+  m_Name: Grasslands
   m_EditorClassIdentifier: Assembly-CSharp::BiomAttributes
-  biomeName: Default
-  solideGroundHeight: 42
-  terrainHeight: 42
-  terrainScale: 0.25
+  biomeName: Grasslands
+  offset: 1234
+  scale: 0.042
+  terrainHeight: 22
+  terrainScale: 0.15
+  surfaceBlock: 3
+  subSurfaceBlock: 5
+  floraType: 0
+  majorFloraZoneScale: 1.3
+  majorFloraZoneThreshold: 0.6
+  majorFloraPlacementScale: 15
+  majorFloraPlacementThreshold: 0.8
+  placeMajorFlora: 1
+  maxHeight: 12
+  minHeight: 5
   lodes:
   - nodeName: Dirt
     blockID: 6
