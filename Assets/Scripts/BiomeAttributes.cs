@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BiomeAttributes", menuName = "Blocks/Biome Attributes")]
-public class BiomAttributes : ScriptableObject
+public class BiomeAttributes : ScriptableObject
 {
     [Header("Major Flora")]
     public string biomeName;

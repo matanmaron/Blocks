@@ -9,7 +9,7 @@ using System;
 public class World : MonoBehaviour
 {
     [Header("World Generation Values")]
-    public BiomAttributes[] biomes;
+    public BiomeAttributes[] biomes;
 
     [Header("Light")]
     [Range(0,1f)] public float globalLightLevel;
@@ -340,7 +340,7 @@ public class World : MonoBehaviour
             }
         }
         //set biome
-        BiomAttributes biome = biomes[strongestWeightIndex];
+        BiomeAttributes biome = biomes[strongestWeightIndex];
 
         //get avrage
         sumOfHeights /= count;
@@ -368,7 +368,7 @@ public class World : MonoBehaviour
                 {
                     if (Noise.Get3DPerlin(pos, lode.noiseOffset, lode.scale, lode.threshold))
                     {
-                        voxelValue = lode.blockID;
+                        voxelValue = (byte)lode.BlockType;
                     }
                 }
             }

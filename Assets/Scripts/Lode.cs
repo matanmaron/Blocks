@@ -7,7 +7,7 @@ using UnityEngine;
 public class Lode
 {
     public string nodeName;
-    public byte blockID;
+    public BlockTypeEnum BlockType;
     public int minHeight;
     public int maxHeight;
     public float scale;

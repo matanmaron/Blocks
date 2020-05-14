@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ea480b148351183428823540b814298a, type: 3}
   m_Name: Grasslands
   m_EditorClassIdentifier: Assembly-CSharp::BiomAttributes
   biomeName: Grasslands
@@ -28,17 +28,24 @@ MonoBehaviour:
   maxHeight: 12
   minHeight: 5
   lodes:
-  - nodeName: Dirt
-    blockID: 5
+  - nodeName: Stone
+    BlockType: 2
     minHeight: 1
     maxHeight: 255
     scale: 0.1
     threshold: 0.5
-    noiseOffset: 0
+    noiseOffset: 22
   - nodeName: Sand
-    blockID: 4
+    BlockType: 4
     minHeight: 30
     maxHeight: 60
     scale: 0.2
     threshold: 0.6
     noiseOffset: 500
+  - nodeName: Cobble
+    BlockType: 9
+    minHeight: 20
+    maxHeight: 100
+    scale: 0.05
+    threshold: 0.2
+    noiseOffset: 250
