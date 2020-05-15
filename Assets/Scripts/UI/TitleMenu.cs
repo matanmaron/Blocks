@@ -22,6 +22,7 @@ public class TitleMenu : MonoBehaviour
     public TextMeshProUGUI mouseText;
     public Toggle threadingToggle;
     public Toggle chunkAnimToggle;
+    public TMP_Dropdown clouds;
 
     Settings settings;
 
@@ -57,9 +58,9 @@ public class TitleMenu : MonoBehaviour
         mouseSlider.value = settings.MouseSensitivity;
         UpdateViewDistSlider();
         UpdateMouseSlider();
-
         threadingToggle.isOn = settings.EnableThreading;
         chunkAnimToggle.isOn = settings.EnableAnimatedChunks;
+        clouds.value = (int)settings.clouds;
 
         mainMenuObject.SetActive(false);
         settingsObject.SetActive(true);
@@ -71,6 +72,7 @@ public class TitleMenu : MonoBehaviour
         settings.MouseSensitivity = mouseSlider.value;
         settings.EnableThreading = threadingToggle.isOn;
         settings.EnableAnimatedChunks = chunkAnimToggle.isOn;
+        settings.clouds = (CloudStyleEnum)clouds.value;
         ExportSettings();
         mainMenuObject.SetActive(true);
         settingsObject.SetActive(false);

@@ -67,6 +67,7 @@ public class World : MonoBehaviour
 
     private void Start()
     {
+        ImportSettings();
         Debug.Log($"Seed id: {VoxelData.seed}");
         UnityEngine.Random.InitState(VoxelData.seed);
         Shader.SetGlobalFloat("MinGlobalLightLevel", VoxelData.minGlobalLightLevel);
@@ -415,6 +416,12 @@ public class World : MonoBehaviour
         }
         return false;
     }
+
+    void ImportSettings()
+    {
+        string jsonImport = File.ReadAllText(Application.dataPath + "/settings.dat");
+        settings = JsonUtility.FromJson<Settings>(jsonImport);
+    }
 }
 
 [System.Serializable]
@@ -480,6 +487,7 @@ public class Settings
     public int ViewDistance = 8;
     public bool EnableThreading = true;
     public bool EnableAnimatedChunks = false;
+    public CloudStyleEnum clouds = CloudStyleEnum.Fast;
 
     [Header("Controls")]
     [Range(0.2f,10f)] public float MouseSensitivity = 1f;

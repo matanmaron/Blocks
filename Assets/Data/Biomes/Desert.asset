@@ -20,9 +20,9 @@ MonoBehaviour:
   surfaceBlock: 4
   subSurfaceBlock: 4
   floraType: 1
-  majorFloraZoneScale: 1.06
+  majorFloraZoneScale: 3
   majorFloraZoneThreshold: 0.75
-  majorFloraPlacementScale: 7.5
+  majorFloraPlacementScale: 7.8
   majorFloraPlacementThreshold: 0.8
   placeMajorFlora: 1
   maxHeight: 6
@@ -30,8 +30,8 @@ MonoBehaviour:
   lodes:
   - nodeName: Dirt
     BlockType: 5
-    minHeight: 5
-    maxHeight: 1
-    scale: 255
+    minHeight: 30
+    maxHeight: 100
+    scale: 0.3
     threshold: 0.1
     noiseOffset: 50
