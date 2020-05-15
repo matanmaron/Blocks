@@ -238,10 +238,3 @@ public class Clouds : MonoBehaviour
         return Mathf.FloorToInt(cloudTexWidth * a);
     }
 }
-
-public enum CloudStyleEnum
-{
-    Off,
-    Fast,
-    Fancy
-}

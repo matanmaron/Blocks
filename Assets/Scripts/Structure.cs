@@ -23,16 +23,16 @@ public static class Structure
         }
         for (int i = 1; i < height; i++)
         {
-            queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + i, pos.z),(int)BlockTypeEnum.Wood));
+            queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + i, pos.z), BlockTypeEnum.Wood));
         }
-        queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + height, pos.z), (int)BlockTypeEnum.Leaves));
+        queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + height, pos.z), BlockTypeEnum.Leaves));
         for (int x = -3; x < 4; x++)
         {
             for (int y = 0; y < 7; y++)
             {
                 for (int z = -3; z < 4; z++)
                 {
-                    queue.Enqueue(new VoxelMod(new Vector3(pos.x + x, pos.y + height + y, pos.z + z), (int)BlockTypeEnum.Leaves));
+                    queue.Enqueue(new VoxelMod(new Vector3(pos.x + x, pos.y + height + y, pos.z + z), BlockTypeEnum.Leaves));
                 }
             }
         }
@@ -49,9 +49,9 @@ public static class Structure
         }
         for (int i = 1; i < height; i++)
         {
-            queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + i, pos.z), (int)BlockTypeEnum.Cactus));
+            queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + i, pos.z), BlockTypeEnum.Cactus));
         }
-        queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + height, pos.z), (int)BlockTypeEnum.CactusTop));
+        queue.Enqueue(new VoxelMod(new Vector3(pos.x, pos.y + height, pos.z), BlockTypeEnum.CactusTop));
 
         return queue;
     }
