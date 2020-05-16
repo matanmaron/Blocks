@@ -1,1 +1,1 @@
-{"Version":"0.0.0.1","LoadDistance":16,"ViewDistance":5,"EnableThreading":true,"EnableAnimatedChunks":true,"clouds":1,"MouseSensitivity":1.0,"InvertMouseWheel":false}
+{"Version":"0.0.0.1","LoadDistance":2,"ViewDistance":2,"EnableThreading":false,"EnableAnimatedChunks":false,"clouds":0,"MouseSensitivity":1.0,"InvertMouseWheel":false}

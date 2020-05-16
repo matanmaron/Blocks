@@ -9,12 +9,15 @@ public static class VoxelData
     public static readonly int ChunkHeight = 128;
     public static readonly int WorldSizeInChunks = 100;
     //lightning values
-    public static float minGlobalLightLevel = 0.15f;
-    public static float maxGlobalLightLevel = 0.8f;
-    public static float lightFalloff = 0.08f;
+    public static float minGlobalLightLevel = 0.1f;
+    public static float maxGlobalLightLevel = 0.9f;
 
     public static int seed;
 
+    public static float UnitOfLight
+    {
+        get { return 1 / 16;}
+    }
     public static int WorldCenter
     {
         get { return (WorldSizeInChunks * ChunkWidth) / 2; }
@@ -48,6 +51,8 @@ public static class VoxelData
         new Vector3Int(-1,0,0),
         new Vector3Int(1,0,0)
     };
+
+    public static readonly int[] revFaceCheckIndex = new int[6] { 1, 0, 3, 2, 5, 4 };
 
     public static readonly int[,] voxelTris = new int[6, 4]
     {

@@ -37,6 +37,22 @@ public static class SaveSystem
         int count = 0;
         foreach (var chunk in chunks)
         {
+            if (count == chunks.Count *0.25)
+            {
+                Debug.Log($"SaveSystem - 25%");
+            }
+            if (count == chunks.Count * 0.5)
+            {
+                Debug.Log($"SaveSystem - 50%");
+            }
+            if (count == chunks.Count *0.75)
+            {
+                Debug.Log($"SaveSystem - 75%");
+            }
+            if (count == chunks.Count * 0.9)
+            {
+                Debug.Log($"SaveSystem - 90%");
+            }
             SaveChunk(chunk, world.worldName);
             count++;
         }

@@ -49,3 +49,10 @@ MonoBehaviour:
     scale: 0.05
     threshold: 0.2
     noiseOffset: 250
+  - nodeName: Cave
+    BlockType: 0
+    minHeight: 5
+    maxHeight: 60
+    scale: 0.1
+    threshold: 0.55
+    noiseOffset: 4535

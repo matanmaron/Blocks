@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Security.Permissions;
 using UnityEngine;
 
@@ -29,10 +28,6 @@ public class WorldData
 
     public void AddToModifiedChunkList(ChunkData chunk)
     {
-        if (modifiedChunks == null)
-        {
-            modifiedChunks = new List<ChunkData>();
-        }
         if (!modifiedChunks.Contains(chunk))
         {
             modifiedChunks.Add(chunk);
@@ -44,10 +39,6 @@ public class WorldData
         ChunkData c;
         lock (World.Instance.chunkListThreadLock)
         {
-            if (chunks == null)
-            {
-                chunks = new Dictionary<Vector2Int, ChunkData>();
-            }
             if (chunks.ContainsKey(coord))
             {
                 c = chunks[coord];
@@ -110,8 +101,7 @@ public class WorldData
 
         ChunkData chunk = RequestChunk(new Vector2Int(x, z), true);
         Vector3Int voxel = new Vector3Int((int)(pos.x - x), (int)pos.y, (int)(pos.z - z));
-        chunk.map[voxel.x, voxel.y, voxel.z].id = value;
-        AddToModifiedChunkList(chunk);
+        chunk.ModifyVoxel(voxel, value);
     }
 
     public VoxelState GetVoxel(Vector3 pos)
@@ -126,7 +116,11 @@ public class WorldData
         x *= VoxelData.ChunkWidth;
         z *= VoxelData.ChunkWidth;
 
-        ChunkData chunk = RequestChunk(new Vector2Int(x, z), true);
+        ChunkData chunk = RequestChunk(new Vector2Int(x, z), false);
+        if (chunk == null)
+        {
+            return null;
+        }
         Vector3Int voxel = new Vector3Int((int)(pos.x - x), (int)pos.y, (int)(pos.z - z));
         return chunk.map[voxel.x, voxel.y, voxel.z];
     }
