@@ -45,5 +45,6 @@ public class ChunkData
                 }
             }
         }
+        World.Instance.worldData.AddToModifiedChunkList(this);
     }
 }

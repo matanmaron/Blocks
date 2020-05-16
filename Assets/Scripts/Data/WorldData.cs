@@ -5,18 +5,49 @@ using System.Diagnostics;
 using System.Security.Permissions;
 using UnityEngine;
 
+[HideInInspector]
 [Serializable]
 public class WorldData
 {
     public string worldName = "Prototype";
     public int seed;
-    public Dictionary<Vector2Int, ChunkData> chunks = new Dictionary<Vector2Int, ChunkData>();
+    
+    [System.NonSerialized] public Dictionary<Vector2Int, ChunkData> chunks = new Dictionary<Vector2Int, ChunkData>();
+    [System.NonSerialized] public List<ChunkData> modifiedChunks = new List<ChunkData>();
+
+    public WorldData(string _worldName, int _seed)
+    {
+        worldName = _worldName;
+        seed = _seed;
+    }
+
+    public WorldData(WorldData wd)
+    {
+        worldName = wd.worldName;
+        seed = wd.seed;
+    }
+
+    public void AddToModifiedChunkList(ChunkData chunk)
+    {
+        if (modifiedChunks == null)
+        {
+            modifiedChunks = new List<ChunkData>();
+        }
+        if (!modifiedChunks.Contains(chunk))
+        {
+            modifiedChunks.Add(chunk);
+        }
+    }
 
     public ChunkData RequestChunk (Vector2Int coord, bool create)
     {
         ChunkData c;
         lock (World.Instance.chunkListThreadLock)
         {
+            if (chunks == null)
+            {
+                chunks = new Dictionary<Vector2Int, ChunkData>();
+            }
             if (chunks.ContainsKey(coord))
             {
                 c = chunks[coord];
@@ -38,6 +69,12 @@ public class WorldData
     {
         if (chunks.ContainsKey(coord))
         {
+            return;
+        }
+        ChunkData chunk = SaveSystem.LoadChunk(worldName, coord);
+        if (chunk!= null)
+        {
+            chunks.Add(coord, chunk);
             return;
         }
         chunks.Add(coord, new ChunkData(coord));
@@ -74,6 +111,7 @@ public class WorldData
         ChunkData chunk = RequestChunk(new Vector2Int(x, z), true);
         Vector3Int voxel = new Vector3Int((int)(pos.x - x), (int)pos.y, (int)(pos.z - z));
         chunk.map[voxel.x, voxel.y, voxel.z].id = value;
+        AddToModifiedChunkList(chunk);
     }
 
     public VoxelState GetVoxel(Vector3 pos)

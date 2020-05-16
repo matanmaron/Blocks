@@ -32,7 +32,8 @@ public class World : MonoBehaviour
     public List<Chunk> chunksToUpdate = new List<Chunk>();
     public Settings settings;
     public Clouds clouds;
-    public WorldData worldData = new WorldData();
+    public WorldData worldData;
+    public string appPath;
 
     Chunk[,] chunks = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
     List<ChunkCoord> activeChunks = new List<ChunkCoord>();
@@ -83,12 +84,15 @@ public class World : MonoBehaviour
         {
             _instance = this;
         }
+        appPath = Application.persistentDataPath;
     }
 
     private void Start()
     {
-        ImportSettings();
         Debug.Log($"Seed id: {VoxelData.seed}");
+
+        worldData = SaveSystem.LoadWorld("Prototype");
+        ImportSettings();
         UnityEngine.Random.InitState(VoxelData.seed);
         Shader.SetGlobalFloat("MinGlobalLightLevel", VoxelData.minGlobalLightLevel);
         Shader.SetGlobalFloat("MaxGlobalLightLevel", VoxelData.maxGlobalLightLevel);
@@ -139,6 +143,10 @@ public class World : MonoBehaviour
             {
                 UpdateChunks();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            SaveSystem.SaveWorld(worldData);
         }
     }
 

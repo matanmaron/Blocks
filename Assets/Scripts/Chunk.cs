@@ -212,6 +212,7 @@ public class Chunk
         xCheck -= Mathf.FloorToInt(chunkObject.transform.position.x);
         zCheck -= Mathf.FloorToInt(chunkObject.transform.position.z);
         chunkData.map[xCheck, yCheck, zCheck].id = _id;
+        World.Instance.worldData.AddToModifiedChunkList(chunkData);
         lock (World.Instance.chunkUpdateThreadLock)
         {
             World.Instance.chunksToUpdate.Insert(0, this);
