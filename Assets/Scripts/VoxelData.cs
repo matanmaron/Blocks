@@ -16,7 +16,7 @@ public static class VoxelData
 
     public static float UnitOfLight
     {
-        get { return 1 / 16;}
+        get { return 1f / 16f;}
     }
     public static int WorldCenter
     {

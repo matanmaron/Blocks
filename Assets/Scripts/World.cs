@@ -268,7 +268,7 @@ public class World : MonoBehaviour
                 }
                 for (int i = 0; i < prevActiveChunks.Count; i++)
                 { 
-                    if (prevActiveChunks[i].Equal(thisChunkCoord))
+                    if (prevActiveChunks[i].Equals(thisChunkCoord))
                     {
                         prevActiveChunks.RemoveAt(i);
                     }

@@ -238,7 +238,7 @@ public class ChunkCoord
         z = _z;
     }
 
-    public bool Equal (ChunkCoord other)
+    public bool Equals(ChunkCoord other)
     {
         if (other == null)
         {
