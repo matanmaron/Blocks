@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class DebugScreen : MonoBehaviour
 {
-    World world;
     TextMeshProUGUI text;
     float frameRate;
     float timer;
@@ -16,7 +15,6 @@ public class DebugScreen : MonoBehaviour
 
     void Start()
     {
-        world = GameObject.Find("World").GetComponent<World>();
         text = GetComponent<TextMeshProUGUI>();
         halfWorldSizeInVoxels = VoxelData.WorldSizeInVoxels / 2;
         halfWorldSizeInChunks = VoxelData.WorldSizeInChunks / 2;
@@ -26,8 +24,8 @@ public class DebugScreen : MonoBehaviour
     {
         StringBuilder debugText = new StringBuilder();
         debugText.AppendLine($"{frameRate} fps");
-        debugText.AppendLine($"XYZ: {Mathf.FloorToInt(world.player.transform.position.x) - halfWorldSizeInVoxels} / {Mathf.FloorToInt(world.player.transform.position.y)} / {Mathf.FloorToInt(world.player.transform.position.z) - halfWorldSizeInVoxels}");
-        debugText.AppendLine($"Chunk: {world.playerChunkCoord.x - halfWorldSizeInChunks} / {world.playerChunkCoord.z - halfWorldSizeInChunks}");
+        debugText.AppendLine($"XYZ: {Mathf.FloorToInt(World.Instance.player.transform.position.x) - halfWorldSizeInVoxels} / {Mathf.FloorToInt(World.Instance.player.transform.position.y)} / {Mathf.FloorToInt(World.Instance.player.transform.position.z) - halfWorldSizeInVoxels}");
+        debugText.AppendLine($"Chunk: {World.Instance.playerChunkCoord.x - halfWorldSizeInChunks} / {World.Instance.playerChunkCoord.z - halfWorldSizeInChunks}");
 
         text.text = debugText.ToString();
 

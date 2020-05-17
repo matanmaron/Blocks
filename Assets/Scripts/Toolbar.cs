@@ -8,11 +8,8 @@ public class Toolbar : MonoBehaviour
     public RectTransform highlight;
     public int slotIndex = 0;
 
-    World world;
-
     private void Start()
     {
-        world = GameObject.Find("World").GetComponent<World>();
         byte index = 1;
         foreach (UIItemSlot s in slots)
         {
@@ -29,11 +26,11 @@ public class Toolbar : MonoBehaviour
         {
             if (scroll > 0)
             {
-                slotIndex = world.settings.InvertMouseWheel ? slotIndex - 1 : slotIndex + 1;
+                slotIndex = World.Instance.settings.InvertMouseWheel ? slotIndex - 1 : slotIndex + 1;
             }
             else
             {
-                slotIndex = world.settings.InvertMouseWheel ? slotIndex + 1 : slotIndex - 1;
+                slotIndex = World.Instance.settings.InvertMouseWheel ? slotIndex + 1 : slotIndex - 1;
             }
             if (slotIndex > slots.Length - 1)
             {

@@ -6,13 +6,11 @@ public class CreativeInventory : MonoBehaviour
 {
     public GameObject slotPrefab;
     
-    World world;
     List<ItemSlot> slots = new List<ItemSlot>();
 
     private void Start()
     {
-        world = GameObject.Find("World").GetComponent<World>();
-        for (int i = 1; i < world.blockTypes.Length; i++)
+        for (int i = 1; i < World.Instance.blockTypes.Length; i++)
         {
             GameObject newSlot = Instantiate(slotPrefab,transform);
             ItemStack stack = new ItemStack((byte)i, 64);

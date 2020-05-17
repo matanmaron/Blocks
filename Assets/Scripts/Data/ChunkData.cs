@@ -69,7 +69,7 @@ public class ChunkData
             return;
         }
         VoxelState voxel = map[pos.x, pos.y, pos.z];
-        BlockType newVoxel = World.Instance.blockTypes[_id];
+        //BlockType newVoxel = World.Instance.blockTypes[_id];
         byte oldOpacity = voxel.properties.opacity;
         voxel.id = _id;
         if (voxel.properties.opacity != oldOpacity && 

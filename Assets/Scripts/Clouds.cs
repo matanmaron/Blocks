@@ -11,7 +11,6 @@ public class Clouds : MonoBehaviour
     
     [SerializeField] Texture2D cloudPattern = null;
     [SerializeField] Material cloudMaterial = null;
-    [SerializeField] World world = null;
 
     bool[,] cloudData;
     int cloudTexWidth;
@@ -45,7 +44,7 @@ public class Clouds : MonoBehaviour
 
     void CreateClouds()
     {
-        if (world.settings.clouds == CloudStyleEnum.Off)
+        if (World.Instance.settings.clouds == CloudStyleEnum.Off)
         {
             return;
         }
@@ -54,7 +53,7 @@ public class Clouds : MonoBehaviour
             for (int z = 0; z < cloudTexWidth; z+=cloudTileSize)
             {
                 Mesh cloudMesh;
-                if (world.settings.clouds == CloudStyleEnum.Fast)
+                if (World.Instance.settings.clouds == CloudStyleEnum.Fast)
                 {
                     cloudMesh = CreateFastCloudMesh(x,z);
                 }
@@ -72,7 +71,7 @@ public class Clouds : MonoBehaviour
 
     public void UpdateClouds()
     {
-        if (world.settings.clouds == CloudStyleEnum.Off)
+        if (World.Instance.settings.clouds == CloudStyleEnum.Off)
         {
             return;
         }
@@ -80,7 +79,7 @@ public class Clouds : MonoBehaviour
         {
             for (int z = 0; z < cloudTexWidth; z += cloudTileSize)
             {
-                Vector3 pos = world.player.position + new Vector3(x, 0, z) + offset;
+                Vector3 pos = World.Instance.player.position + new Vector3(x, 0, z) + offset;
                 pos = new Vector3(RoundToCloud(pos.x), cloudHeight, RoundToCloud(pos.z));
                 Vector2Int cloudPos = CloudTilePosFromV3(pos);
                 clouds[cloudPos].transform.position = pos;

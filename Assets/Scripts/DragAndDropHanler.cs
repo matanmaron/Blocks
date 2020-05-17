@@ -12,17 +12,15 @@ public class DragAndDropHanler : MonoBehaviour
     
     ItemSlot cursorItemSlot;
     PointerEventData m_PointerEventData;
-    World world;
     
     private void Start()
     {
-        world = GameObject.Find("World").GetComponent<World>();
         cursorItemSlot = new ItemSlot(cursorSlot);
     }
 
     private void Update()
     {
-        if (!world.inUI)
+        if (!World.Instance.inUI)
         {
             return;
         }

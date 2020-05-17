@@ -13,13 +13,6 @@ public class UIItemSlot : MonoBehaviour
     public Image slotIcon;
     public TextMeshProUGUI slotAmount;
 
-    World world;
-
-    private void Awake()
-    {
-        world = GameObject.Find("World").GetComponent<World>();
-    }
-
     public bool HasItem
     {
         get
@@ -51,7 +44,7 @@ public class UIItemSlot : MonoBehaviour
     {
         if (itemSlot != null && itemSlot.HasItem)
         {
-            slotIcon.sprite = world.blockTypes[itemSlot.stack.id].icon;
+            slotIcon.sprite = World.Instance.blockTypes[itemSlot.stack.id].icon;
             slotAmount.text = itemSlot.stack.amout.ToString();
             slotIcon.enabled = true;
             slotAmount.enabled = true;
