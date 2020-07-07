@@ -6,11 +6,11 @@ using UnityEngine;
 [Serializable]
 public class ChunkData
 {
-    [HideInInspector] public VoxelState[,,] map = new VoxelState[VoxelData.ChunkWidth, VoxelData.ChunkHeight, VoxelData.ChunkWidth];
+    [NonSerialized] public VoxelState[,,] map = new VoxelState[VoxelData.ChunkWidth, VoxelData.ChunkHeight, VoxelData.ChunkWidth];
     [NonSerialized] public Chunk chunk;
 
-    int x;
-    int y;
+    public int x;
+    public int y;
 
     public Vector2Int pos
     {

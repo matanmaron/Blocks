@@ -75,6 +75,7 @@ public class World : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log($"World: Loaded in {Time.timeSinceLevelLoad} sec");
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -106,6 +107,10 @@ public class World : MonoBehaviour
         {
             chunkUpdateThread = new Thread(new ThreadStart(ThreadedUpdate));
             chunkUpdateThread.Start();
+        }
+        else
+        {
+
         }
     }
 
@@ -399,8 +404,23 @@ public class World : MonoBehaviour
 
     void ImportSettings()
     {
-        string jsonImport = File.ReadAllText(Application.dataPath + "/settings.dat");
-        settings = JsonUtility.FromJson<Settings>(jsonImport);
+        if (File.Exists(Application.dataPath + "/settings.dat"))
+        {
+            string jsonImport = File.ReadAllText(Application.dataPath + "/settings.dat");
+            settings = JsonUtility.FromJson<Settings>(jsonImport);
+        }
+        else
+        {
+            settings = new Settings();
+            settings.clouds = CloudStyleEnum.Fancy;
+            settings.EnableThreading = false;
+            settings.EnableAnimatedChunks = true;
+            settings.LoadDistance = 4;
+            settings.ViewDistance = 4;
+            settings.Version = "1";
+            settings.MouseSensitivity = 1f;
+            settings.InvertMouseWheel = false;
+        }
     }
 
     bool IsVoxelInWorld(Vector3 pos)

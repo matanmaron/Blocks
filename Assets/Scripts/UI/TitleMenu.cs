@@ -23,6 +23,7 @@ public class TitleMenu : MonoBehaviour
     public Toggle threadingToggle;
     public Toggle chunkAnimToggle;
     public TMP_Dropdown clouds;
+    public GameObject loadingPanel;
 
     Settings settings;
 
@@ -44,6 +45,7 @@ public class TitleMenu : MonoBehaviour
     public void StartGame()
     {
         VoxelData.seed = Mathf.Abs(seedField.text.GetHashCode()) / VoxelData.WorldSizeInChunks;
+        loadingPanel.SetActive(true);
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
 
